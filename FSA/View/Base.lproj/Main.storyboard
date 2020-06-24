@@ -31,6 +31,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWK-22-kz4">
                                         <rect key="frame" x="0.0" y="168" width="314" height="34"/>
                                         <state key="normal" title="Get Local Time"/>
+                                        <connections>
+                                            <action selector="fetchButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ndK-di-stF"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZF-Pu-L8f">
                                         <rect key="frame" x="0.0" y="252" width="314" height="34"/>
@@ -50,6 +53,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="cityTextField" destination="1CR-Br-LJw" id="Itf-TC-R2Y"/>
+                        <outlet property="countryTextField" destination="Bp5-eb-AkB" id="0Uw-7r-EJO"/>
+                        <outlet property="localTimeLabel" destination="yZF-Pu-L8f" id="bTC-HO-tVT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
