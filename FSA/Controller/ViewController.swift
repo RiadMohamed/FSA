@@ -20,14 +20,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        countryTextField.delegate = self
+        cityTextField.delegate = self
     }
 
     // MARK: - Actions
-    // MARK: - FetchButtonTapped
+        // MARK: - FetchButtonTapped
     @IBAction func fetchButtonTapped(_ sender: UIButton) {
+        countryTextField.endEditing(true)
+        cityTextField.endEditing(true)
         print("Button Tapped")
     }
-    
 
 }
 
+// MARK: - UITextFieldDelegate
+extension ViewController: UITextFieldDelegate {
+    
+}
