@@ -50,6 +50,7 @@
 		0C3D612324A3C511007A4B6F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0CA972C524A3761F002AB9BA /* LaunchScreen.storyboard */,
 				0CA972BD24A37619002AB9BA /* Main.storyboard */,
 			);
 			path = View;
@@ -81,13 +82,12 @@
 		0CA972B624A37619002AB9BA /* FSA */ = {
 			isa = PBXGroup;
 			children = (
+				0CA972B924A37619002AB9BA /* SceneDelegate.swift */,
 				0CA972B724A37619002AB9BA /* AppDelegate.swift */,
 				0C3D612424A3C51B007A4B6F /* Model */,
-				0CA972B924A37619002AB9BA /* SceneDelegate.swift */,
 				0C3D612224A3C4FD007A4B6F /* Controller */,
 				0C3D612324A3C511007A4B6F /* View */,
 				0CA972C324A3761F002AB9BA /* Assets.xcassets */,
-				0CA972C524A3761F002AB9BA /* LaunchScreen.storyboard */,
 				0CA972C824A3761F002AB9BA /* Info.plist */,
 				0CA972C024A37619002AB9BA /* FSA.xcdatamodeld */,
 			);
@@ -315,6 +315,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MF3X44AK3;
 				INFOPLIST_FILE = FSA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -333,6 +334,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MF3X44AK3;
 				INFOPLIST_FILE = FSA/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
