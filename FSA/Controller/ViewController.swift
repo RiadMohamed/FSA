@@ -30,11 +30,17 @@ class ViewController: UIViewController {
         countryTextField.endEditing(true)
         cityTextField.endEditing(true)
         print("Button Tapped")
+        // TODO: call the fetch function
     }
 
 }
 
 // MARK: - UITextFieldDelegate
 extension ViewController: UITextFieldDelegate {
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        print(textField.text ?? "")
+        // TODO: Call the fetch function
+        return true
+    }
 }
