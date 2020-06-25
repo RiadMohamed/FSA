@@ -23,7 +23,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bp5-eb-AkB">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="OUT OF SERVICE" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bp5-eb-AkB">
                                         <rect key="frame" x="0.0" y="84" width="314" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -54,8 +54,6 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="cityTextField" destination="1CR-Br-LJw" id="Itf-TC-R2Y"/>
-                        <outlet property="countryTextField" destination="Bp5-eb-AkB" id="0Uw-7r-EJO"/>
                         <outlet property="localTimeLabel" destination="yZF-Pu-L8f" id="bTC-HO-tVT"/>
                     </connections>
                 </viewController>
