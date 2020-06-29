@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     
 //    @IBOutlet weak var countryTextField: UITextField!
     @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var countryTextField: UITextField!
     @IBOutlet weak var localTimeLabel: UILabel!
     
     // MARK: - ViewDidLoad
@@ -62,29 +63,36 @@ class ViewController: UIViewController {
         // TODO: Get the date with the corressponding given unix time.
         
         // TODO: return the output as a string.
-        return localTimeString
+        return localTimeString 
     }
     
     
     // MARK: - Actions
         // MARK: - FetchButtonTapped
     @IBAction func fetchButtonTapped(_ sender: UIButton) {
-//        countryTextField.endEditing(true)
+        countryTextField.endEditing(true)
         cityTextField.endEditing(true)
         print("Button Tapped")
-        print(cityTextField.text ?? "")
-        // TODO: call the fetch function
-        if let locationString = cityTextField.text, locationString.count != 0 {
-            localTimeLabel.text = fetchLocalTime(address: locationString)
+        guard let cityName = cityTextField.text, cityName.count != 0 else {
+            print("City textfield is empty, couldn't get city name")
+            return
         }
-        
-        
+//        print(cityName)
+        var locationString = cityName
+        if let countryName = countryTextField.text, countryName.count != 0 {
+            locationString.append(", " + countryName)
+        } else {
+            print("Country textfield is empty, couldn't get country name")
+        }
+        print(locationString)
+        // TODO: call the fetchLocalTime function
+        fetchLocalTime(address: locationString)
     }
 
 }
 
 // MARK: - Delegates Methods
-// MARK: - UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
