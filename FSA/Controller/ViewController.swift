@@ -58,11 +58,27 @@ class ViewController: UIViewController {
     /// Takes a location address string and returns the coordinates of that address.
     /// - Parameter address: string describing the location address in the form of "{cityName}" or  "{cityName}, {countryName}"
     /// - Returns: CLLocationCoordinate2D object containg the coordinates of the location address given
-    func getCoordinatesByCoreLocation(address: String) -> CLLocationCoordinate2D {
+    func getCoordinatesByCoreLocation(address: String, handler: @escaping(CLLocationCoordinate2D?, NSError?) -> Void) {
         // TODO: Initiate the CoreLocation service to get the coordinates of the given address.
-        
         var coordinates = CLLocationCoordinate2D()
-        return coordinates
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address) { (placemarks, error)  in
+            if let _ = error {
+                print(error.debugDescription)
+                return
+            }
+            let placemark = placemarks?.first
+//            print(placemark?.location?.coordinate.latitude)
+//            print(placemark?.location?.coordinate.longitude)
+            if let lat = placemark?.location?.coordinate.latitude, let long = placemark?.location?.coordinate.longitude {
+                coordinates.latitude = lat
+                coordinates.longitude = long
+                handler(coordinates, nil)
+            } else {
+                // Create a coordinatesRetrieve Error
+            }
+            
+        }
     }
     
     /// Take a location address string and returns the local time of that location using CoreLocation and API from TimeZoneDB
@@ -70,15 +86,25 @@ class ViewController: UIViewController {
     /// - Returns: string with the current local time at the given location address in the form of "HH:MM:SS AM/PM"
     func fetchLocalTime(address locationString: String) -> String {
         //TODO: Get coordinates of the city.
-        let coordinates = getCoordinatesByCoreLocation(address: locationString)
+        var coordinates = CLLocationCoordinate2D()
+        getCoordinatesByCoreLocation(address: "1 Infinite Loop, Cupertino, CA") { (locationCoordinates, error) in
+            guard let _ = locationCoordinates else {
+                return
+            }
+            coordinates = locationCoordinates!
+            print(coordinates.latitude)
+            print(coordinates.longitude)
+        }
+        print("lat = \(coordinates.latitude)")
+        print("long = \(coordinates.longitude)")
         
         //TODO: Get the current unix time from the TimeZoneDB API
-        let currentUnixTime = getUnixTime(lat: Double(coordinates.latitude), long: Double(coordinates.longitude))
+//        let currentUnixTime = getUnixTime(lat: Double(coordinates.latitude), long: Double(coordinates.longitude))
         
         //TODO: convert the unix time to string "HH:MM:SS AM/PM"
-        let currentLocalTimeString: String = getLocalTimeString(unix: currentUnixTime)
+//        let currentLocalTimeString: String = getLocalTimeString(unix: currentUnixTime)
         
-        return currentLocalTimeString
+        return "NOT YET"
     }
     
     // MARK: - Actions
