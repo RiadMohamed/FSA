@@ -84,7 +84,7 @@ class ViewController: UIViewController {
     /// Take a location address string and returns the local time of that location using CoreLocation and API from TimeZoneDB
     /// - Parameter locationString: string describing the location address in the form of "{cityName}" or  "{cityName}, {countryName}"
     /// - Returns: string with the current local time at the given location address in the form of "HH:MM:SS AM/PM"
-    func fetchLocalTime(address locationString: String) -> String {
+    func fetchLocalTime(address locationString: String, completionHandler: @escaping(String?, Error?) -> Void) {
         //TODO: Get coordinates of the city.
         var coordinates = CLLocationCoordinate2D()
         getCoordinatesByCoreLocation(address: "1 Infinite Loop, Cupertino, CA") { (locationCoordinates, error) in
@@ -103,8 +103,6 @@ class ViewController: UIViewController {
         
         //TODO: convert the unix time to string "HH:MM:SS AM/PM"
 //        let currentLocalTimeString: String = getLocalTimeString(unix: currentUnixTime)
-        
-        return "NOT YET"
     }
     
     // MARK: - Actions
@@ -126,7 +124,13 @@ class ViewController: UIViewController {
         }
         print(locationString)
         // TODO: call the fetchLocalTime function and set the localTimeLabel.text to it's result
-        localTimeLabel.text = fetchLocalTime(address: locationString)
+        fetchLocalTime(address: locationString) { (localTime, error) in
+            
+            // localTime exists.
+            DispatchQueue.main.async {
+                self.localTimeLabel.text = localTime
+            }
+        }
     }
 
 }
@@ -140,4 +144,9 @@ extension ViewController: UITextFieldDelegate {
         // TODO: Call the fetch function
         return true
     }
+}
+
+// MARK: - Error Enum
+enum FSAError: Error {
+    case gettingCoordinatesError
 }
