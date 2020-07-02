@@ -58,24 +58,21 @@ class ViewController: UIViewController {
     /// Takes a location address string and returns the coordinates of that address.
     /// - Parameter address: string describing the location address in the form of "{cityName}" or  "{cityName}, {countryName}"
     /// - Returns: CLLocationCoordinate2D object containg the coordinates of the location address given
-    func getCoordinatesByCoreLocation(address: String, handler: @escaping(CLLocationCoordinate2D?, NSError?) -> Void) {
+    func getCoordinatesByCoreLocation(address: String, handler: @escaping(CLLocationCoordinate2D?, Error?) -> Void) {
         // TODO: Initiate the CoreLocation service to get the coordinates of the given address.
-        var coordinates = CLLocationCoordinate2D()
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { (placemarks, error)  in
-            if let _ = error {
+            guard let placemark = placemarks?.first, error == nil else {
                 print(error.debugDescription)
+                handler(nil, FSAError.gettingCoordinatesError)
                 return
             }
-            let placemark = placemarks?.first
-//            print(placemark?.location?.coordinate.latitude)
-//            print(placemark?.location?.coordinate.longitude)
-            if let lat = placemark?.location?.coordinate.latitude, let long = placemark?.location?.coordinate.longitude {
-                coordinates.latitude = lat
-                coordinates.longitude = long
+            
+            if let location = placemark.location?.coordinate {
+                let coordinates = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
                 handler(coordinates, nil)
             } else {
-                // Create a coordinatesRetrieve Error
+                handler(nil, FSAError.parseLocationCoordinatesError)
             }
             
         }
@@ -86,17 +83,14 @@ class ViewController: UIViewController {
     /// - Returns: string with the current local time at the given location address in the form of "HH:MM:SS AM/PM"
     func fetchLocalTime(address locationString: String, completionHandler: @escaping(String?, Error?) -> Void) {
         //TODO: Get coordinates of the city.
-        var coordinates = CLLocationCoordinate2D()
-        getCoordinatesByCoreLocation(address: "1 Infinite Loop, Cupertino, CA") { (locationCoordinates, error) in
-            guard let _ = locationCoordinates else {
+        getCoordinatesByCoreLocation(address: locationString) { (locationCoordinates, error) in
+            guard let coordinates = locationCoordinates, error == nil else {
+                completionHandler(nil, error)
                 return
             }
-            coordinates = locationCoordinates!
-            print(coordinates.latitude)
-            print(coordinates.longitude)
+            completionHandler("\(coordinates.latitude), \(coordinates.longitude)", nil)
         }
-        print("lat = \(coordinates.latitude)")
-        print("long = \(coordinates.longitude)")
+
         
         //TODO: Get the current unix time from the TimeZoneDB API
 //        let currentUnixTime = getUnixTime(lat: Double(coordinates.latitude), long: Double(coordinates.longitude))
@@ -110,7 +104,7 @@ class ViewController: UIViewController {
     @IBAction func fetchButtonTapped(_ sender: UIButton) {
         countryTextField.endEditing(true)
         cityTextField.endEditing(true)
-        print("Button Tapped")
+//        print("Button Tapped")
         guard let cityName = cityTextField.text, cityName.count != 0 else {
             print("City textfield is empty, couldn't get city name")
             return
@@ -120,15 +114,20 @@ class ViewController: UIViewController {
         if let countryName = countryTextField.text, countryName.count != 0 {
             locationString.append(", " + countryName)
         } else {
-            print("Country textfield is empty, couldn't get country name")
+//            print("Country textfield is empty, couldn't get country name")
         }
         print(locationString)
+        
         // TODO: call the fetchLocalTime function and set the localTimeLabel.text to it's result
         fetchLocalTime(address: locationString) { (localTime, error) in
-            
+            guard let safeLocalTime = localTime, error == nil else {
+                print(error!)
+                return
+            }
             // localTime exists.
             DispatchQueue.main.async {
-                self.localTimeLabel.text = localTime
+                
+                self.localTimeLabel.text = safeLocalTime
             }
         }
     }
@@ -144,9 +143,4 @@ extension ViewController: UITextFieldDelegate {
         // TODO: Call the fetch function
         return true
     }
-}
-
-// MARK: - Error Enum
-enum FSAError: Error {
-    case gettingCoordinatesError
 }
