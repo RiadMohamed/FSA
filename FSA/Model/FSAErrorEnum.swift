@@ -13,3 +13,9 @@ enum FSAError: Error {
     case parseLocationCoordinatesError
 }
 
+enum State {
+    case idle
+    case waitingForCoordinates
+    case waitingForUNIXTime
+    case waitingForUNIXParse
+}
