@@ -47,14 +47,48 @@ class ViewController: UIViewController {
         return localTimeString 
     }
     
+    func handle(data: Data?, response: URLResponse?, error: Error?) {
+        if error != nil {
+            print("Networking code returned an error. \(error!)")
+            return
+        }
+        
+        guard let safeData = data else {
+            print("Unwrapping safe data from receieved data failed.")
+            return
+        }
+        
+        let dataString = String(data: safeData, encoding: .utf8)
+        print(dataString)
+    }
+    
     /// Takes a lat and long, create a GET request to TimeZone DB with given coordinates, receieve the JSON response then extract and return the unix time for the current local time at those coordinates.
     /// - Parameters:
     ///   - lat: latitude of the location
     ///   - long: longitude of the location
     /// - Returns: current unix local time of the given location
-    func getUnixTime(lat: Double, long: Double) -> Double {
+    func getUnixTime(coordinates: CLLocationCoordinate2D) -> Double {
         let unixTime: Double = 0
         // TODO: Create the networking code for the request and receieve the response.
+        let APIKey = "AP6KGMZ6GGA3"
+        let format = "json"
+        let by = "position"
+        let timeZoneURL = URL(string: "https://api.timezonedb.com/v2.1/get-time-zone?key=\(APIKey)&format=\(format)&by=\(by)&lat=\(coordinates.latitude)&lng=\(coordinates.longitude)")
+        
+        // Create a URL
+        guard let url = timeZoneURL else {
+            print("Creating URL failed")
+            return -1999999.9
+        }
+    
+        // Create URLSession
+        let session = URLSession(configuration: .default)
+        
+        // Give the session a task
+        let task = session.dataTask(with: url, completionHandler: handle(data:response:error:))
+        
+        // Start the task
+        task.resume()
         
         // TODO: Parse the response as JSON and extract the current UNIX time.
         
@@ -87,7 +121,7 @@ class ViewController: UIViewController {
     func fetchLocalTime(address locationString: String) {
         
         getCoordinatesByCoreLocation(address: locationString) { (c, error) in
-            guard let coordinates = c, error != nil else {
+            guard let coordinates = c, error == nil else {
                 print(error!)
                 return
             }
@@ -97,8 +131,10 @@ class ViewController: UIViewController {
             self.localTime = "\(coordinates.latitude), \(coordinates.longitude)"
             
             // Networking code
+            let result = self.getUnixTime(coordinates: coordinates)
+            print(result)
             
-            // UNIX Format code 
+            // UNIX Format code
             
             
         }
