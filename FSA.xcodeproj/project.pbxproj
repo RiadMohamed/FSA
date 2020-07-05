@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0C49DD0924AE614100673784 /* FSAErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49DD0824AE614100673784 /* FSAErrorEnum.swift */; };
+		0C49DD0B24B2000200673784 /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49DD0A24B2000200673784 /* TimeModel.swift */; };
 		0CA972B824A37619002AB9BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972B724A37619002AB9BA /* AppDelegate.swift */; };
 		0CA972BA24A37619002AB9BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972B924A37619002AB9BA /* SceneDelegate.swift */; };
 		0CA972BC24A37619002AB9BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972BB24A37619002AB9BA /* ViewController.swift */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		0C49DD0824AE614100673784 /* FSAErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSAErrorEnum.swift; sourceTree = "<group>"; };
+		0C49DD0A24B2000200673784 /* TimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
 		0CA972B424A37619002AB9BA /* FSA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA972B724A37619002AB9BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CA972B924A37619002AB9BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				0C49DD0824AE614100673784 /* FSAErrorEnum.swift */,
+				0C49DD0A24B2000200673784 /* TimeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				0CA972B824A37619002AB9BA /* AppDelegate.swift in Sources */,
 				0CA972C224A37619002AB9BA /* FSA.xcdatamodeld in Sources */,
 				0CA972BA24A37619002AB9BA /* SceneDelegate.swift in Sources */,
+				0C49DD0B24B2000200673784 /* TimeModel.swift in Sources */,
 				0C49DD0924AE614100673784 /* FSAErrorEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,10 +14,16 @@ class ViewController: UIViewController {
     
     var localTime: String = "" {
         didSet {
-            localTimeLabel.text = localTime
+            DispatchQueue.main.async {
+                self.localTimeLabel.text = self.localTime
+            }
         }
     }
-    var state: State = .idle
+    var state: State = .idle {
+        didSet {
+            print(state)
+        }
+    }
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
     @IBOutlet weak var localTimeLabel: UILabel!
@@ -37,7 +43,8 @@ class ViewController: UIViewController {
     /// Takes unix time and create a Date Formatter object that will parse the unix time into string and return it back.
     /// - Parameter unix: Unix time
     /// - Returns: string with the format of "HH:MM:SS AM/PM"
-    func getLocalTimeString(unix: Double) -> String {
+    func formatUnixTime(unix: Double) -> String {
+        state = .formattingUnixTime
         let localTimeString = "EMPTY TIME STRING"
         // TODO: Initiate the Date Formatter object with the time style.
         
@@ -46,30 +53,29 @@ class ViewController: UIViewController {
         // TODO: return the output as a string.
         return localTimeString 
     }
-    
-    func handle(data: Data?, response: URLResponse?, error: Error?) {
-        if error != nil {
-            print("Networking code returned an error. \(error!)")
-            return
+    func parseJSON(timeData: Data) -> Double? {
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(TimeModel.self, from: timeData)
+            return decodedData.timestamp
+        } catch {
+            print(error)
+            return nil
+            
         }
         
-        guard let safeData = data else {
-            print("Unwrapping safe data from receieved data failed.")
-            return
-        }
         
-        let dataString = String(data: safeData, encoding: .utf8)
-        print(dataString)
     }
+    
     
     /// Takes a lat and long, create a GET request to TimeZone DB with given coordinates, receieve the JSON response then extract and return the unix time for the current local time at those coordinates.
     /// - Parameters:
     ///   - lat: latitude of the location
     ///   - long: longitude of the location
     /// - Returns: current unix local time of the given location
-    func getUnixTime(coordinates: CLLocationCoordinate2D) -> Double {
-        let unixTime: Double = 0
+    func getUnixTime(coordinates: CLLocationCoordinate2D, completionHander: @escaping (Double?, Error?) -> Void) {
         // TODO: Create the networking code for the request and receieve the response.
+        state = .gettingUnixTime
         let APIKey = "AP6KGMZ6GGA3"
         let format = "json"
         let by = "position"
@@ -78,21 +84,35 @@ class ViewController: UIViewController {
         // Create a URL
         guard let url = timeZoneURL else {
             print("Creating URL failed")
-            return -1999999.9
+            state = .idle
+            completionHander(nil, FSAError.creatingURLError)
+            return
         }
-    
+        
         // Create URLSession
         let session = URLSession(configuration: .default)
         
         // Give the session a task
-        let task = session.dataTask(with: url, completionHandler: handle(data:response:error:))
-        
+        let task = session.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print("Networking code returned an error. \(error!)")
+                self.state = .idle
+                completionHander(nil, FSAError.networkingError)
+            }
+            
+            guard let safeData = data else {
+                print("Unwrapping safe data from receieved data failed.")
+                self.state = .idle
+                completionHander(nil, FSAError.unwrappingNetworkingDataError)
+                return
+            }
+            
+            let unixTime = self.parseJSON(timeData: safeData)
+            self.state = .idle
+            completionHander(unixTime, nil)
+        }
         // Start the task
         task.resume()
-        
-        // TODO: Parse the response as JSON and extract the current UNIX time.
-        
-        return unixTime
     }
     
     
@@ -101,7 +121,7 @@ class ViewController: UIViewController {
     /// - Returns: CLLocationCoordinate2D object containg the coordinates of the location address given
     func getCoordinatesByCoreLocation(address: String, completionHandler: @escaping (CLLocationCoordinate2D?, Error?) -> Void) {
         // TODO: Initiate the CoreLocation service to get the coordinates of the given address.
-        self.state = .waitingForCoordinates
+        self.state = .gettingCoordinates
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(address) { (placemarks, error)  in
             guard let coordinates = placemarks?.first?.location?.coordinate, error == nil else {
@@ -119,24 +139,30 @@ class ViewController: UIViewController {
     /// - Parameter locationString: string describing the location address in the form of "{cityName}" or  "{cityName}, {countryName}"
     /// - Returns: string with the current local time at the given location address in the form of "HH:MM:SS AM/PM"
     func fetchLocalTime(address locationString: String) {
-        
+        // CoreLocation Code
         getCoordinatesByCoreLocation(address: locationString) { (c, error) in
             guard let coordinates = c, error == nil else {
                 print(error!)
                 return
             }
             
-            print(self.state)
-            print(coordinates)
+            print("Phase one result = \(coordinates)")
             self.localTime = "\(coordinates.latitude), \(coordinates.longitude)"
             
             // Networking code
-            let result = self.getUnixTime(coordinates: coordinates)
-            print(result)
-            
-            // UNIX Format code
-            
-            
+            self.getUnixTime(coordinates: coordinates) { (unixTime, error) in
+                if error != nil {
+                    print(error!)
+                }
+                guard let safeUnixTime = unixTime else {
+                    print("Error unwrapping the unix time.")
+                    return
+                }
+                print("Phase two result = \(safeUnixTime)")
+                self.localTime = "\(safeUnixTime)"
+                // UNIX Formatting code
+                
+            }
         }
     }
     

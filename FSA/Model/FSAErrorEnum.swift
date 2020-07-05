@@ -11,11 +11,14 @@ import Foundation
 enum FSAError: Error {
     case gettingCoordinatesError
     case parseLocationCoordinatesError
+    case creatingURLError
+    case networkingError
+    case unwrappingNetworkingDataError
 }
 
 enum State {
     case idle
-    case waitingForCoordinates
-    case waitingForUNIXTime
-    case waitingForUNIXParse
+    case gettingCoordinates
+    case gettingUnixTime
+    case formattingUnixTime
 }
