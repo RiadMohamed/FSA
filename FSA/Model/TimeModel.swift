@@ -9,4 +9,5 @@
 import Foundation
 struct TimeModel: Decodable {
     let timestamp: Double
+    let gmtOffset: Int
 }

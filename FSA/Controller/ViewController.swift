@@ -43,21 +43,26 @@ class ViewController: UIViewController {
     /// Takes unix time and create a Date Formatter object that will parse the unix time into string and return it back.
     /// - Parameter unix: Unix time
     /// - Returns: string with the format of "HH:MM:SS AM/PM"
-    func formatUnixTime(unix: Double) -> String {
+    func formatUnixTime(unixTime: Double, gmtOffset: Int) -> String {
         state = .formattingUnixTime
-        let localTimeString = "EMPTY TIME STRING"
         // TODO: Initiate the Date Formatter object with the time style.
+        let date = Date(timeIntervalSince1970: unixTime)
+        print(date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")!
+        dateFormatter.timeStyle = .medium
         
         // TODO: Get the date with the corressponding given unix time.
-        
+        let localTimeString = dateFormatter.string(from: date)
         // TODO: return the output as a string.
+        self.state = .idle
         return localTimeString 
     }
-    func parseJSON(timeData: Data) -> Double? {
+    func parseJSON(timeData: Data) -> TimeModel? {
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode(TimeModel.self, from: timeData)
-            return decodedData.timestamp
+            let timeModel = try decoder.decode(TimeModel.self, from: timeData)
+            return timeModel
         } catch {
             print(error)
             return nil
@@ -73,7 +78,7 @@ class ViewController: UIViewController {
     ///   - lat: latitude of the location
     ///   - long: longitude of the location
     /// - Returns: current unix local time of the given location
-    func getUnixTime(coordinates: CLLocationCoordinate2D, completionHander: @escaping (Double?, Error?) -> Void) {
+    func getUnixTime(coordinates: CLLocationCoordinate2D, completionHander: @escaping (TimeModel?, Error?) -> Void) {
         // TODO: Create the networking code for the request and receieve the response.
         state = .gettingUnixTime
         let APIKey = "AP6KGMZ6GGA3"
@@ -107,9 +112,9 @@ class ViewController: UIViewController {
                 return
             }
             
-            let unixTime = self.parseJSON(timeData: safeData)
+            let timeModel = self.parseJSON(timeData: safeData)
             self.state = .idle
-            completionHander(unixTime, nil)
+            completionHander(timeModel, nil)
         }
         // Start the task
         task.resume()
@@ -150,18 +155,19 @@ class ViewController: UIViewController {
             self.localTime = "\(coordinates.latitude), \(coordinates.longitude)"
             
             // Networking code
-            self.getUnixTime(coordinates: coordinates) { (unixTime, error) in
+            self.getUnixTime(coordinates: coordinates) { (timeModel, error) in
                 if error != nil {
                     print(error!)
                 }
-                guard let safeUnixTime = unixTime else {
+                guard let safeTimeModel = timeModel else {
                     print("Error unwrapping the unix time.")
                     return
                 }
-                print("Phase two result = \(safeUnixTime)")
-                self.localTime = "\(safeUnixTime)"
-                // UNIX Formatting code
+                print("Phase two result = \(safeTimeModel)")
+                self.localTime = "\(safeTimeModel.timestamp)"
                 
+                //TODO: UNIX Formatting code
+                self.localTime = self.formatUnixTime(unixTime: safeTimeModel.timestamp, gmtOffset: safeTimeModel.gmtOffset)
             }
         }
     }
@@ -207,5 +213,9 @@ extension ViewController: UITextFieldDelegate {
         print(textField.text ?? "")
         // TODO: Call the fetch function
         return true
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
     }
 }
