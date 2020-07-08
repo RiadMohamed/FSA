@@ -14,9 +14,12 @@ Experince (so far) with:
 
 Next up:
 ---------
+* Migrate from Azure to GitHub using Zenhub plugin to apply agile methodology.
+  Sprint -> Milestone. User Story -> Issue. Feature -> Epic. Release -> Group of features done.
 * Use CI scripts for swift when merging into master for releases.
 * Use pipelines for CD.
 * Update my website to include this repo.
+
 
 
 Project Retrospection (so far):
