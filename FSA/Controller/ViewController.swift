@@ -196,18 +196,14 @@ extension ViewController {
                 completionHander(nil, FSAError.unwrappingNetworkingDataError)
                 return
             }
-            
-            // Successful API request, successful data extraction, update app state, send back the data object via completionHandler.
+            // Successful API request, update app state, send back the data object via completionHandler.
             let timeModel = self.parseJSONToTimeModel(timeData: safeData)
             self.state = .idle
             completionHander(timeModel, nil)
         }
-        
         // 4- Start the task
         task.resume()
     }
-    
-    
     /// Returns a TimeModel? object from the given Data object that is received from the API call.
     /// - Parameter timeData: Data object that holds the JSON data that can be parsed into a TimeModel
     /// - Returns: TimeModel? object
@@ -233,18 +229,14 @@ extension ViewController {
     func formatUnixTime(unixTime: Double) -> String {
         // Update the app state.
         state = .formattingUnixTime
-        
         // Create a Date object from the unix time.
         let date = Date(timeIntervalSince1970: unixTime)
-        
         // Create a DateFormatter object to style the date object
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT")!
         dateFormatter.timeStyle = .medium
-        
         // Parse the date object as a string given the selected styling in the date formatter object.
         let localTimeString = dateFormatter.string(from: date)
-        
         // Update the app state and return the result.
         self.state = .idle
         return localTimeString
