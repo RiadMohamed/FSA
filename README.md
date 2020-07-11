@@ -11,11 +11,12 @@ Experince (so far) with:
 * Project managements using Scrum (Agile) process for sprint planning and managing the backlog.
 * GitHub integration with Azure DevOps baords, services and work items.
 * Releases on GitHub.
+* Migrate from Azure to GitHub using Zenhub plugin to apply agile methodology.
+  Sprint -> Milestone. User Story -> Issue. Feature -> Epic. Release -> Group of features done.
 
 Next up:
 ---------
-* Migrate from Azure to GitHub using Zenhub plugin to apply agile methodology.
-  Sprint -> Milestone. User Story -> Issue. Feature -> Epic. Release -> Group of features done.
+* (Re)Use CocoaPods for UI instead of creating my own UI.
 * Use CI scripts for swift when merging into master for releases.
 * Use pipelines for CD.
 * Update my website to include this repo.
