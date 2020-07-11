@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     
     var state: State = .idle {
         didSet {
-            print(state)
+            print("State = \(state)")
         }
     }
     
@@ -67,7 +67,9 @@ class ViewController: UIViewController {
                 self.localTime = "\(safeTimeModel.timestamp)"
                 
                 // UNIX Formatting Module.
-                self.localTime = self.formatUnixTime(unixTime: safeTimeModel.timestamp)
+                let finalLocalTime = self.formatUnixTime(unixTime: safeTimeModel.timestamp)
+                print("Phase three result = \(finalLocalTime)")
+                self.localTime = finalLocalTime
             }
         }
     }
@@ -96,7 +98,7 @@ class ViewController: UIViewController {
         // Hide the keyboard.
         countryTextField.endEditing(true)
         cityTextField.endEditing(true)
-        
+        localTimeLabel.text = cityTextField.text ?? "No Text"
         // Get a locationString.
         guard let locationString = setupLocationString() else {
             print("Could not get the location string")
