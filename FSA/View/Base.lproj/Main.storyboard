@@ -15,6 +15,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background1" translatesAutoresizingMaskIntoConstraints="NO" id="f3Q-Af-Pjk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="IFE-tU-1Zl">
                                 <rect key="frame" x="50" y="305" width="314" height="286"/>
                                 <subviews>
@@ -46,8 +49,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="f3Q-Af-Pjk" secondAttribute="bottom" id="Dcd-kS-Cll"/>
+                            <constraint firstItem="f3Q-Af-Pjk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Lhi-RB-ktr"/>
                             <constraint firstItem="IFE-tU-1Zl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PG0-1W-OsG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IFE-tU-1Zl" secondAttribute="trailing" constant="50" id="YVf-ML-2SC"/>
+                            <constraint firstItem="f3Q-Af-Pjk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="kDg-tt-m2V"/>
+                            <constraint firstItem="f3Q-Af-Pjk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="lA0-af-PBN"/>
                             <constraint firstItem="IFE-tU-1Zl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="roT-DT-wWj"/>
                             <constraint firstItem="IFE-tU-1Zl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="tfw-7N-P0H"/>
                         </constraints>
@@ -64,4 +71,7 @@
             <point key="canvasLocation" x="140.57971014492756" y="120.53571428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background1" width="120" height="85"/>
+    </resources>
 </document>
