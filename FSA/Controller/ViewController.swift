@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreLocation
+import NVActivityIndicatorView
+
 
 class ViewController: UIViewController {
     // MARK: - Properties
@@ -32,6 +34,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
+    @IBOutlet weak var loaderView: NVActivityIndicatorView!
     
     
     // MARK: - ViewDidLoad
@@ -48,6 +51,9 @@ class ViewController: UIViewController {
         cityLabel.isHidden = true
         countryLabel.isHidden = true
         localTimeLabel.isHidden = true
+        
+        loaderView.type = .orbit
+        loaderView.color = .black
     }
     
     // MARK: - Functions
@@ -80,6 +86,9 @@ class ViewController: UIViewController {
                 // UNIX Formatting Module.
                 let finalLocalTime = self.formatUnixTime(unixTime: safeTimeModel.timestamp)
                 print("Phase three result = \(finalLocalTime)")
+                DispatchQueue.main.async {
+                    self.loaderView.stopAnimating()
+                }
                 self.localTime = finalLocalTime
             }
         }
@@ -107,6 +116,7 @@ class ViewController: UIViewController {
     /// Hide the keyboard, setup the location address, call the fetchLocalTime function with  locationString
     @IBAction func fetchButtonTapped(_ sender: UIButton) {
         // Hide the keyboard.
+        loaderView.startAnimating()
         countryTextField.endEditing(true)
         cityTextField.endEditing(true)
         localTimeLabel.text = ""
