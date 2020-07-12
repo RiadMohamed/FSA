@@ -37,6 +37,8 @@ class ViewController: UIViewController {
         cityTextField.delegate = self
         countryTextField.delegate = self
         state = .idle
+        let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+        view.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - Functions
