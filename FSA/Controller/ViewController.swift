@@ -29,6 +29,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var cityTextField: UITextField!
     @IBOutlet weak var countryTextField: UITextField!
     @IBOutlet weak var localTimeLabel: UILabel!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var countryLabel: UILabel!
+    
     
     // MARK: - ViewDidLoad
     
@@ -36,9 +40,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         cityTextField.delegate = self
         countryTextField.delegate = self
-        state = .idle
+        
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
+        
+        state = .idle
+        cityLabel.isHidden = true
+        countryLabel.isHidden = true
+        localTimeLabel.isHidden = true
     }
     
     // MARK: - Functions
@@ -100,7 +109,10 @@ class ViewController: UIViewController {
         // Hide the keyboard.
         countryTextField.endEditing(true)
         cityTextField.endEditing(true)
-        localTimeLabel.text = cityTextField.text ?? "No Text"
+        localTimeLabel.text = ""
+        localTimeLabel.isHidden = false
+        
+        
         // Get a locationString.
         guard let locationString = setupLocationString() else {
             print("Could not get the location string")
@@ -117,7 +129,6 @@ class ViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
         print(textField.text ?? "")
         fetchButtonTapped(UIButton())
         return true
@@ -125,6 +136,26 @@ extension ViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.text = ""
+        textField.placeholder = ""
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+            if textField.tag == 1 {
+                self.cityLabel.isHidden = false
+            } else if textField.tag == 2 {
+                self.countryLabel.isHidden = false
+            }
+        }, completion: nil)
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+            if textField.tag == 1 {
+                self.cityLabel.isHidden = true
+                textField.placeholder = "City"
+            } else if textField.tag == 2 {
+                self.countryLabel.isHidden = true
+                textField.placeholder = "Country"
+            }
+        }, completion: nil)
     }
 }
 
