@@ -52,8 +52,8 @@ class ViewController: UIViewController {
         countryLabel.isHidden = true
         localTimeLabel.isHidden = true
         
-        loaderView.type = .orbit
-        loaderView.color = .black
+        loaderView.type = .lineScalePulseOutRapid
+        loaderView.color = UIColor(named: "LightTeal") ?? .black
     }
     
     // MARK: - Functions
