@@ -18,6 +18,7 @@ Experince (so far) with:
 Next up:
 ---------
 * Starting next release, more branches to be included/created: Develop, Feature, Release.
+* Push notifications.
 * Use CI scripts for swift when merging into master for releases.
 * Use pipelines for CD.
 * Update my website to include this repo.
