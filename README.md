@@ -18,6 +18,7 @@ Experince (so far) with:
 
 Next up:
 ---------
+* Create a test scheme and create test cases for it.
 * Starting next release, more branches to be included/created: Develop, Feature, Release.
 * Push notifications.
 * Use pipelines for CD.
