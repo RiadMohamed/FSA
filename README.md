@@ -13,10 +13,12 @@ Experince (so far) with:
 * Releases on GitHub.
 * Migrate from Azure to GitHub using Zenhub plugin to apply agile methodology.
   Sprint -> Milestone. User Story -> Issue. Feature -> Epic. Release -> Group of features done.
+  * (Re)Use CocoaPods for UI instead of creating my own UI.
 
 Next up:
 ---------
-* (Re)Use CocoaPods for UI instead of creating my own UI.
+* Starting next release, more branches to be included/created: Develop, Feature, Release.
+* Push notifications.
 * Use CI scripts for swift when merging into master for releases.
 * Use pipelines for CD.
 * Update my website to include this repo.
