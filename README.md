@@ -15,11 +15,11 @@ Experince (so far) with:
   Sprint -> Milestone. User Story -> Issue. Feature -> Epic. Release -> Group of features done.
 * (Re)Use CocoaPods for UI instead of creating my own UI.
 * Use CI scripts for swift when merging into dev for an added feature.
+* A "dev" branch for development, keeping the master for releases.
 
 Next up:
 ---------
 * Create a test scheme and create test cases for it.
-* Starting next release, more branches to be included/created: Develop, Feature, Release.
 * Push notifications.
 * Use pipelines for CD.
 * Update my website to include this repo.
