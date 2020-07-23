@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xlQ-WZ-Kwc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Item-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FSA" customModuleProvider="target" sceneMemberID="viewController">
@@ -63,7 +64,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="88e-xJ-ei5" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                <rect key="frame" x="50" y="628" width="314" height="94"/>
+                                <rect key="frame" x="50" y="628" width="314" height="65"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -71,7 +72,7 @@
                         <constraints>
                             <constraint firstItem="88e-xJ-ei5" firstAttribute="top" secondItem="IFE-tU-1Zl" secondAttribute="bottom" constant="8" id="1Q9-E5-ldh"/>
                             <constraint firstAttribute="bottom" secondItem="f3Q-Af-Pjk" secondAttribute="bottom" id="Dcd-kS-Cll"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="88e-xJ-ei5" secondAttribute="bottom" constant="140" id="JMt-Eu-EWf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="88e-xJ-ei5" secondAttribute="bottom" constant="120" id="JMt-Eu-EWf"/>
                             <constraint firstItem="f3Q-Af-Pjk" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Lhi-RB-ktr"/>
                             <constraint firstItem="IFE-tU-1Zl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PG0-1W-OsG"/>
                             <constraint firstItem="88e-xJ-ei5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="UQe-js-JCF"/>
@@ -84,6 +85,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="globe" catalog="system" selectedImage="globe" id="CZ2-Xa-cjP"/>
                     <connections>
                         <outlet property="cityLabel" destination="Q62-kU-OkU" id="jER-BJ-fYg"/>
                         <outlet property="cityTextField" destination="1CR-Br-LJw" id="vYM-PQ-4Ve"/>
@@ -96,10 +98,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140.57971014492756" y="120.53571428571428"/>
+            <point key="canvasLocation" x="1490" y="-243"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="bZO-4n-2iq">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="xlQ-WZ-Kwc" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jhE-gu-Y5j">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="DarkTeal"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="WfZ-Om-Tl9"/>
+                        <segue destination="LmK-p7-Wrl" kind="relationship" relationship="viewControllers" id="d9c-ZP-SMu"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ob5-cM-rgk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="682.60869565217399" y="120.53571428571428"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="eQY-fS-lqD">
+            <objects>
+                <viewController id="LmK-p7-Wrl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Pn-ah-Dar">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="loJ-r5-ULW"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" image="alarm" catalog="system" selectedImage="alarm" id="yuz-1Y-w34"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jmh-fb-Erv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1490" y="504"/>
         </scene>
     </scenes>
     <resources>
+        <image name="alarm" catalog="system" width="124" height="128"/>
         <image name="background1" width="120" height="85"/>
+        <image name="globe" catalog="system" width="128" height="121"/>
+        <namedColor name="DarkTeal">
+            <color red="0.14000000059604645" green="0.25799998641014099" blue="0.27900001406669617" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
