@@ -23,6 +23,7 @@ Next up:
 * Push notifications.
 * Use pipelines for CD.
 * Update my website to include this repo.
+* Implement a MVVM, MVP, VIPER architectures.
 
 
 
