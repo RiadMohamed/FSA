@@ -125,8 +125,7 @@
         <!--Item-->
         <scene sceneID="eQY-fS-lqD">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Jmh-fb-Erv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="LmK-p7-Wrl" sceneMemberID="viewController">
+                <viewController id="LmK-p7-Wrl" customClass="AlarmViewController" customModule="FSA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Pn-ah-Dar">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -168,7 +167,11 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" image="alarm" catalog="system" selectedImage="alarm" id="yuz-1Y-w34"/>
+                    <connections>
+                        <outlet property="tableView" destination="fcj-7w-Czf" id="BVb-6z-9d7"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jmh-fb-Erv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1489.8550724637682" y="503.57142857142856"/>
         </scene>
