@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xlQ-WZ-Kwc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LmK-p7-Wrl">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -134,19 +134,22 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="pkc-Zz-wGb">
-                                        <rect key="frame" x="20" y="0.0" width="374" height="22"/>
+                                        <rect key="frame" x="20" y="0.0" width="374" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ej-SD-j6v">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bb4-dV-pur">
-                                                <rect key="frame" x="356" y="0.0" width="18" height="22"/>
+                                                <rect key="frame" x="356" y="0.0" width="18" height="30"/>
                                                 <state key="normal" image="plus" catalog="system"/>
+                                                <connections>
+                                                    <segue destination="eOK-Qu-1IU" kind="presentation" id="V2m-Z2-SI1"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fcj-7w-Czf">
-                                        <rect key="frame" x="0.0" y="30" width="414" height="739"/>
+                                        <rect key="frame" x="0.0" y="38" width="414" height="731"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </tableView>
                                 </subviews>
@@ -174,6 +177,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jmh-fb-Erv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1489.8550724637682" y="503.57142857142856"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QsN-or-bem">
+            <objects>
+                <viewController id="eOK-Qu-1IU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="osa-qG-723">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y4w-3n-UkA">
+                                <rect key="frame" x="20" y="40" width="374" height="33"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="296" translatesAutoresizingMaskIntoConstraints="NO" id="Hde-LK-WA0">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="33"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YR-ce-Cv6">
+                                                <rect key="frame" x="0.0" y="0.0" width="53" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Cancel"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1z-Aw-2z5">
+                                                <rect key="frame" x="349" y="0.0" width="25" height="33"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="RkR-4A-OG1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Y4w-3n-UkA" firstAttribute="top" secondItem="RkR-4A-OG1" secondAttribute="top" constant="40" id="WYf-ao-WNE"/>
+                            <constraint firstItem="Y4w-3n-UkA" firstAttribute="centerX" secondItem="osa-qG-723" secondAttribute="centerX" id="meg-dt-E8I"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SyD-ud-VJK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2347.826086956522" y="503.57142857142856"/>
         </scene>
     </scenes>
     <resources>
