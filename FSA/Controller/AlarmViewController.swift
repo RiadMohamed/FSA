@@ -25,6 +25,24 @@ class AlarmViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: UIButton) {
+        // TODO: Create a new alarm object from the data the user entered.
+        let alarm = Alarm(alarmDate: datePicker.date, title: titleTextField.text ?? "", notes: notesTextField.text ?? "")
+        
+        guard let parentVC = self.presentingViewController as? AlarmListViewController else {
+            print("VC is not shown modally from parent")
+            return
+        }
+        parentVC.alarmsArray.append(alarm)
+        parentVC.saveArray()
+        
+        dismiss(animated: true, completion: nil)
+        
+        // TODO: Save the alarm object in the AlarmListVC alarms.
+//        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//            // Get the new view controller using segue.destination.
+//            // Pass the selected object to the new view controller.
+//            
+//        }
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
