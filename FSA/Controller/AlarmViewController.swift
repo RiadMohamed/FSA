@@ -2,25 +2,34 @@
 //  AlarmViewController.swift
 //  FSA
 //
-//  Created by Riad Mohamed on 9/18/20.
+//  Created by Riad Mohamed on 9/20/20.
 //  Copyright © 2020 Riad Mohamed. All rights reserved.
 //
 
 import UIKit
 
 class AlarmViewController: UIViewController {
+
     // MARK: - Outlets & Variables
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var notesTextField: UITextField!
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+
         // Do any additional setup after loading the view.
     }
     
-
+    
+    // MARK: - Actions
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+    }
+    
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 
@@ -31,20 +40,4 @@ class AlarmViewController: UIViewController {
     }
     */
 
-}
-
-// MARK: - TableView Delegate & DataSource Extension
-extension AlarmViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: Set the number of rows to count of the alarms array
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: Design the alarm cell
-        let cell = UITableViewCell()
-        return cell
-    }
-    
-    
 }
