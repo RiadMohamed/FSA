@@ -125,7 +125,7 @@
         <!--Item-->
         <scene sceneID="eQY-fS-lqD">
             <objects>
-                <viewController id="LmK-p7-Wrl" customClass="AlarmViewController" customModule="FSA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="LmK-p7-Wrl" customClass="AlarmListViewController" customModule="FSA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9Pn-ah-Dar">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -178,40 +178,96 @@
             </objects>
             <point key="canvasLocation" x="1489.8550724637682" y="503.57142857142856"/>
         </scene>
-        <!--View Controller-->
+        <!--Alarm View Controller-->
         <scene sceneID="QsN-or-bem">
             <objects>
-                <viewController id="eOK-Qu-1IU" sceneMemberID="viewController">
+                <viewController id="eOK-Qu-1IU" customClass="AlarmViewController" customModule="FSA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="osa-qG-723">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y4w-3n-UkA">
-                                <rect key="frame" x="20" y="40" width="374" height="33"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DzL-zo-sdt">
+                                <rect key="frame" x="14" y="40" width="386" height="426.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="296" translatesAutoresizingMaskIntoConstraints="NO" id="Hde-LK-WA0">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="33"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y4w-3n-UkA">
+                                        <rect key="frame" x="0.0" y="0.0" width="386" height="33"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YR-ce-Cv6">
-                                                <rect key="frame" x="0.0" y="0.0" width="53" height="33"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <state key="normal" title="Cancel"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1z-Aw-2z5">
-                                                <rect key="frame" x="349" y="0.0" width="25" height="33"/>
-                                            </button>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="296" translatesAutoresizingMaskIntoConstraints="NO" id="Hde-LK-WA0">
+                                                <rect key="frame" x="0.0" y="0.0" width="386" height="33"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YR-ce-Cv6">
+                                                        <rect key="frame" x="0.0" y="0.0" width="53" height="33"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <state key="normal" title="Cancel"/>
+                                                        <connections>
+                                                            <action selector="cancelButtonTapped:" destination="eOK-Qu-1IU" eventType="touchUpInside" id="TTr-dg-5KL"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1z-Aw-2z5">
+                                                        <rect key="frame" x="349" y="0.0" width="37" height="33"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <state key="normal" title="Save"/>
+                                                        <connections>
+                                                            <action selector="saveButtonTapped:" destination="eOK-Qu-1IU" eventType="touchUpInside" id="YRX-UP-Ft6"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set the alarm time (zulu time)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dy5-2F-1AT">
+                                        <rect key="frame" x="0.0" y="41" width="224.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Cq6-HH-s5M">
+                                        <rect key="frame" x="0.0" y="69" width="386" height="216"/>
+                                        <color key="tintColor" red="0.14047676319999999" green="0.25750997660000002" blue="0.27880072589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <locale key="locale" localeIdentifier="zu"/>
+                                    </datePicker>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbA-qG-t2O">
+                                        <rect key="frame" x="0.0" y="293.5" width="37.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ye4-ek-Tiy">
+                                        <rect key="frame" x="0.0" y="322" width="386" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ1-R8-cud">
+                                        <rect key="frame" x="0.0" y="364" width="50" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VMC-Cb-ZnC">
+                                        <rect key="frame" x="0.0" y="392.5" width="386" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Cq6-HH-s5M" secondAttribute="trailing" id="k1X-e4-ueL"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ye4-ek-Tiy" secondAttribute="trailing" id="zJj-6g-VEZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="VMC-Cb-ZnC" secondAttribute="trailing" id="zd8-2b-sCa"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RkR-4A-OG1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Y4w-3n-UkA" firstAttribute="top" secondItem="RkR-4A-OG1" secondAttribute="top" constant="40" id="WYf-ao-WNE"/>
-                            <constraint firstItem="Y4w-3n-UkA" firstAttribute="centerX" secondItem="osa-qG-723" secondAttribute="centerX" id="meg-dt-E8I"/>
+                            <constraint firstItem="DzL-zo-sdt" firstAttribute="centerX" secondItem="osa-qG-723" secondAttribute="centerX" id="2tt-x7-uXh"/>
+                            <constraint firstItem="DzL-zo-sdt" firstAttribute="top" secondItem="RkR-4A-OG1" secondAttribute="top" constant="40" id="aWZ-Y5-pW3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="datePicker" destination="Cq6-HH-s5M" id="fhy-sS-FpT"/>
+                        <outlet property="notesTextField" destination="VMC-Cb-ZnC" id="2Ah-LQ-hdx"/>
+                        <outlet property="titleTextField" destination="Ye4-ek-Tiy" id="RLI-3D-PxL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SyD-ud-VJK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
