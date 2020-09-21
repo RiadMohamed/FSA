@@ -15,10 +15,9 @@
 		0CA972BA24A37619002AB9BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972B924A37619002AB9BA /* SceneDelegate.swift */; };
 		0CA972BC24A37619002AB9BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972BB24A37619002AB9BA /* ViewController.swift */; };
 		0CA972BF24A37619002AB9BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA972BD24A37619002AB9BA /* Main.storyboard */; };
-		0CA972C224A37619002AB9BA /* FSA.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972C024A37619002AB9BA /* FSA.xcdatamodeld */; };
+		0CA972C224A37619002AB9BA /* FSADataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972C024A37619002AB9BA /* FSADataModel.xcdatamodeld */; };
 		0CA972C424A3761F002AB9BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CA972C324A3761F002AB9BA /* Assets.xcassets */; };
 		0CA972C724A3761F002AB9BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA972C524A3761F002AB9BA /* LaunchScreen.storyboard */; };
-		0CB75A2425169E3A0087E07B /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB75A2325169E3A0087E07B /* Alarm.swift */; };
 		1E1BD1808B7D5B44A279EFF9 /* Pods_FSA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A93C49DDCA3756A36256372 /* Pods_FSA.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +35,6 @@
 		0CA972C324A3761F002AB9BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CA972C624A3761F002AB9BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CA972C824A3761F002AB9BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0CB75A2325169E3A0087E07B /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
 		7A93C49DDCA3756A36256372 /* Pods_FSA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FSA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		967B68047EDC8CCD6DB2311F /* Pods-FSA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSA.debug.xcconfig"; path = "Target Support Files/Pods-FSA/Pods-FSA.debug.xcconfig"; sourceTree = "<group>"; };
 		A4A85DF7D054AF58AB8931C2 /* Pods-FSA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSA.release.xcconfig"; path = "Target Support Files/Pods-FSA/Pods-FSA.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,9 +74,9 @@
 		0C3D612424A3C51B007A4B6F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0CA972C024A37619002AB9BA /* FSADataModel.xcdatamodeld */,
 				0C49DD0824AE614100673784 /* FSAErrorEnum.swift */,
 				0C49DD0A24B2000200673784 /* TimeModel.swift */,
-				0CB75A2325169E3A0087E07B /* Alarm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -111,7 +109,6 @@
 				0C3D612324A3C511007A4B6F /* View */,
 				0CA972C324A3761F002AB9BA /* Assets.xcassets */,
 				0CA972C824A3761F002AB9BA /* Info.plist */,
-				0CA972C024A37619002AB9BA /* FSA.xcdatamodeld */,
 			);
 			path = FSA;
 			sourceTree = "<group>";
@@ -270,8 +267,7 @@
 				0CA972BC24A37619002AB9BA /* ViewController.swift in Sources */,
 				0CA972B824A37619002AB9BA /* AppDelegate.swift in Sources */,
 				0C41ECA92515590200D64AD0 /* AlarmListViewController.swift in Sources */,
-				0CB75A2425169E3A0087E07B /* Alarm.swift in Sources */,
-				0CA972C224A37619002AB9BA /* FSA.xcdatamodeld in Sources */,
+				0CA972C224A37619002AB9BA /* FSADataModel.xcdatamodeld in Sources */,
 				0C9788EF2517A45400BD9EC3 /* AlarmViewController.swift in Sources */,
 				0CA972BA24A37619002AB9BA /* SceneDelegate.swift in Sources */,
 				0C49DD0B24B2000200673784 /* TimeModel.swift in Sources */,
@@ -481,13 +477,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		0CA972C024A37619002AB9BA /* FSA.xcdatamodeld */ = {
+		0CA972C024A37619002AB9BA /* FSADataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				0CA972C124A37619002AB9BA /* FSA.xcdatamodel */,
 			);
 			currentVersion = 0CA972C124A37619002AB9BA /* FSA.xcdatamodel */;
-			path = FSA.xcdatamodeld;
+			path = FSADataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

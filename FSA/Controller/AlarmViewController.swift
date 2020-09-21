@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+
 
 class AlarmViewController: UIViewController {
 
@@ -26,7 +28,12 @@ class AlarmViewController: UIViewController {
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         // TODO: Create a new alarm object from the data the user entered.
-        let alarm = Alarm(alarmDate: datePicker.date, title: titleTextField.text ?? "", notes: notesTextField.text ?? "")
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let alarm = Alarm(context: context)
+        alarm.title = titleTextField.text ?? ""
+        alarm.date = datePicker.date
+        alarm.notes = notesTextField.text ?? ""
         
         guard let parentVC = self.presentingViewController as? AlarmListViewController else {
             print("VC is not shown modally from parent")

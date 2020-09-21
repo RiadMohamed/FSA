@@ -7,11 +7,13 @@
 //
 
 import UIKit
-
+import CoreData
 class AlarmListViewController: UIViewController {
     // MARK: - Outlets & Variables
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     @IBOutlet weak var tableView: UITableView!
     var alarmsArray: [Alarm] = []
+    
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -25,15 +27,22 @@ class AlarmListViewController: UIViewController {
     
     func saveArray() {
         // TODO: CoreDate to save the alarmsArray
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error saving context: \(error)")
+        }
+        
+        self.tableView.reloadData()
+        
     }
     
     func loadArray() -> [Alarm] {
         //TODO: CoreData to load the saved alarms
         
         //TODO: In case the loading failed then return empty array with print statement.
-        return [
-            Alarm(alarmDate: Date(), title: "Test Title", notes: "Test Note")
-        ]
+        return []
     }
 
     /*
@@ -63,8 +72,8 @@ extension AlarmListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.textLabel?.text = alarmsArray[indexPath.row].title
         
-        // TODO: change the title to alarmDate.
-        cell.detailTextLabel?.text = alarmsArray[indexPath.row].title
+        // TODO: change the notes to date.
+        cell.detailTextLabel?.text = alarmsArray[indexPath.row].notes
         return cell
     }
     
