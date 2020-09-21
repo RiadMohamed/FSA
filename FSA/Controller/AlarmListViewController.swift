@@ -26,8 +26,6 @@ class AlarmListViewController: UIViewController {
     }
     
     func saveArray() {
-        // TODO: CoreDate to save the alarmsArray
-        
         do {
             try context.save()
         } catch {
@@ -40,6 +38,12 @@ class AlarmListViewController: UIViewController {
     
     func loadArray() -> [Alarm] {
         //TODO: CoreData to load the saved alarms
+        let request : NSFetchRequest<Alarm> = Alarm.fetchRequest()
+        do {
+            return try context.fetch(request)
+        } catch {
+            print("Error loading alarms: \(error)")
+        }
         
         //TODO: In case the loading failed then return empty array with print statement.
         return []
