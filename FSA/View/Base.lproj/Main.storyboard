@@ -218,32 +218,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DzL-zo-sdt">
-                                <rect key="frame" x="14" y="40" width="386" height="426.5"/>
+                                <rect key="frame" x="20" y="40" width="374" height="426.5"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y4w-3n-UkA">
-                                        <rect key="frame" x="0.0" y="0.0" width="386" height="33"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Y4w-3n-UkA">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="33"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="296" translatesAutoresizingMaskIntoConstraints="NO" id="Hde-LK-WA0">
-                                                <rect key="frame" x="0.0" y="0.0" width="386" height="33"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YR-ce-Cv6">
-                                                        <rect key="frame" x="0.0" y="0.0" width="53" height="33"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <state key="normal" title="Cancel"/>
-                                                        <connections>
-                                                            <action selector="cancelButtonTapped:" destination="eOK-Qu-1IU" eventType="touchUpInside" id="TTr-dg-5KL"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1z-Aw-2z5">
-                                                        <rect key="frame" x="349" y="0.0" width="37" height="33"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <state key="normal" title="Save"/>
-                                                        <connections>
-                                                            <action selector="saveButtonTapped:" destination="eOK-Qu-1IU" eventType="touchUpInside" id="YRX-UP-Ft6"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2YR-ce-Cv6">
+                                                <rect key="frame" x="0.0" y="0.0" width="53" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelButtonTapped:" destination="eOK-Qu-1IU" eventType="touchUpInside" id="TTr-dg-5KL"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1z-Aw-2z5">
+                                                <rect key="frame" x="337" y="0.0" width="37" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="saveButtonTapped:" destination="eOK-Qu-1IU" eventType="touchUpInside" id="YRX-UP-Ft6"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set the alarm time (zulu time)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dy5-2F-1AT">
@@ -253,7 +248,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Cq6-HH-s5M">
-                                        <rect key="frame" x="0.0" y="69.5" width="386" height="216"/>
+                                        <rect key="frame" x="0.0" y="69.5" width="374" height="216"/>
                                         <color key="tintColor" red="0.14047676319999999" green="0.25750997660000002" blue="0.27880072589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <locale key="locale" localeIdentifier="zu"/>
                                     </datePicker>
@@ -264,7 +259,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ye4-ek-Tiy">
-                                        <rect key="frame" x="0.0" y="322" width="386" height="34"/>
+                                        <rect key="frame" x="0.0" y="322" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -275,12 +270,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VMC-Cb-ZnC">
-                                        <rect key="frame" x="0.0" y="392.5" width="386" height="34"/>
+                                        <rect key="frame" x="0.0" y="392.5" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Y4w-3n-UkA" firstAttribute="leading" secondItem="DzL-zo-sdt" secondAttribute="leading" id="1Ao-wr-fUR"/>
+                                    <constraint firstAttribute="trailing" secondItem="Y4w-3n-UkA" secondAttribute="trailing" id="9Gr-HX-KRV"/>
                                     <constraint firstAttribute="trailing" secondItem="Cq6-HH-s5M" secondAttribute="trailing" id="k1X-e4-ueL"/>
                                     <constraint firstAttribute="trailing" secondItem="Ye4-ek-Tiy" secondAttribute="trailing" id="zJj-6g-VEZ"/>
                                     <constraint firstAttribute="trailing" secondItem="VMC-Cb-ZnC" secondAttribute="trailing" id="zd8-2b-sCa"/>
@@ -291,7 +288,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DzL-zo-sdt" firstAttribute="centerX" secondItem="osa-qG-723" secondAttribute="centerX" id="2tt-x7-uXh"/>
+                            <constraint firstItem="DzL-zo-sdt" firstAttribute="leading" secondItem="osa-qG-723" secondAttribute="leadingMargin" id="NXw-W7-bne"/>
                             <constraint firstItem="DzL-zo-sdt" firstAttribute="top" secondItem="RkR-4A-OG1" secondAttribute="top" constant="40" id="aWZ-Y5-pW3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="DzL-zo-sdt" secondAttribute="trailing" id="sBE-FT-uZU"/>
                         </constraints>
                     </view>
                     <connections>

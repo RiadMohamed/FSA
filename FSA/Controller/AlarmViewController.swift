@@ -17,17 +17,20 @@ class AlarmViewController: UIViewController {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var notesTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
-    var alarm: Alarm? = nil
+    var currentAlarm: Alarm? = nil
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         datePicker.timeZone = TimeZone(identifier: "UTC")
         
-        if let currentAlarm = alarm {
-            titleTextField.text = currentAlarm.title
-            notesTextField.text = currentAlarm.notes
-            datePicker.date = currentAlarm.date!
+        if let safeCurrentAlarm = currentAlarm {
+            titleTextField.text = safeCurrentAlarm.title
+            notesTextField.text = safeCurrentAlarm.notes
+            datePicker.date = safeCurrentAlarm.date!
+            saveButton.setTitle("Update Alarm", for: .normal)
+        } else {
+            saveButton.setTitle("Add Alarm", for: .normal)
         }
     }
     
@@ -48,12 +51,22 @@ class AlarmViewController: UIViewController {
     }
     
     func updateAlarm() {
+        // TODO: write the updateAlarm Function
+        currentAlarm!.title = titleTextField.text ?? ""
+        currentAlarm!.date = datePicker.date
+        currentAlarm!.notes = notesTextField.text ?? ""
         
+        guard let parentVC = self.presentingViewController as? AlarmListViewController else {
+            print("VC is not shown modally from parent")
+            return
+        }
+        
+        parentVC.updateAlarm(currentAlarm!)
     }
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: UIButton) {
-        if alarm == nil {
+        if currentAlarm == nil {
             saveNewAlarm()
         } else {
             updateAlarm()

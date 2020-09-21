@@ -32,7 +32,7 @@ class AlarmListViewController: UIViewController {
             print("Error saving context: \(error)")
         }
         
-        self.tableView.reloadData()
+        tableView.reloadData()
         
     }
     
@@ -49,16 +49,20 @@ class AlarmListViewController: UIViewController {
         return []
     }
     
-    func updateAlarm(at index: Int) {
-        
+    func updateAlarm(_ updatedAlarm: Alarm) {
+        // TODO: Write the updateAlarm function
+        let indexPath = tableView.indexPathForSelectedRow
+        tableView.deselectRow(at: indexPath!, animated: true)
+        alarmsArray[indexPath!.row] = updatedAlarm
+        self.saveArray()
     }
     
     func deleteAlarm(at index: Int) {
-        
+        // TODO: Write the deleteAlarm function
     }
     
     func deleteAllAlarms() {
-        
+        // TODO: Write the deleteAllAlarms function
     }
 
      // MARK: - Navigation
@@ -66,9 +70,8 @@ class AlarmListViewController: UIViewController {
         if segue.identifier == "alarmPageSegue" {
             let destVC = segue.destination as! AlarmViewController
             let indexPath = tableView.indexPathForSelectedRow
-            print("2: \(indexPath?.row)")
-            tableView.deselectRow(at: indexPath!, animated: true)
-            destVC.alarm = alarmsArray[indexPath!.row]
+//            tableView.deselectRow(at: indexPath!, animated: true)
+            destVC.currentAlarm = alarmsArray[indexPath!.row]
         }
     
          
