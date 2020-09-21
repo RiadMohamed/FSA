@@ -16,19 +16,23 @@ class AlarmViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var notesTextField: UITextField!
+    @IBOutlet weak var saveButton: UIButton!
+    var alarm: Alarm? = nil
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        datePicker.timeZone = TimeZone(identifier: "UTC")
+        
+        if let currentAlarm = alarm {
+            titleTextField.text = currentAlarm.title
+            notesTextField.text = currentAlarm.notes
+            datePicker.date = currentAlarm.date!
+        }
     }
     
     
-    // MARK: - Actions
-    @IBAction func saveButtonTapped(_ sender: UIButton) {
-        // TODO: Create a new alarm object from the data the user entered.
-        
+    func saveNewAlarm() {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let alarm = Alarm(context: context)
         alarm.title = titleTextField.text ?? ""
@@ -41,10 +45,21 @@ class AlarmViewController: UIViewController {
         }
         parentVC.alarmsArray.append(alarm)
         parentVC.saveArray()
+    }
+    
+    func updateAlarm() {
         
+    }
+    
+    // MARK: - Actions
+    @IBAction func saveButtonTapped(_ sender: UIButton) {
+        if alarm == nil {
+            saveNewAlarm()
+        } else {
+            updateAlarm()
+        }
         dismiss(animated: true, completion: nil)
         
-        // TODO: Save the alarm object in the AlarmListVC alarms.
 //        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //            // Get the new view controller using segue.destination.
 //            // Pass the selected object to the new view controller.

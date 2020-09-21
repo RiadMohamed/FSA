@@ -143,7 +143,7 @@
                                                 <rect key="frame" x="356" y="0.0" width="18" height="22"/>
                                                 <state key="normal" image="plus" catalog="system"/>
                                                 <connections>
-                                                    <segue destination="eOK-Qu-1IU" kind="presentation" id="V2m-Z2-SI1"/>
+                                                    <segue destination="eOK-Qu-1IU" kind="presentation" identifier="" id="V2m-Z2-SI1"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -202,6 +202,7 @@
                     <navigationItem key="navigationItem" id="q8z-2i-0SW"/>
                     <connections>
                         <outlet property="tableView" destination="fcj-7w-Czf" id="BVb-6z-9d7"/>
+                        <segue destination="eOK-Qu-1IU" kind="presentation" identifier="alarmPageSegue" id="bqn-hy-Fah"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jmh-fb-Erv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -213,7 +214,7 @@
             <objects>
                 <viewController id="eOK-Qu-1IU" customClass="AlarmViewController" customModule="FSA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="osa-qG-723">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DzL-zo-sdt">
@@ -296,6 +297,7 @@
                     <connections>
                         <outlet property="datePicker" destination="Cq6-HH-s5M" id="fhy-sS-FpT"/>
                         <outlet property="notesTextField" destination="VMC-Cb-ZnC" id="2Ah-LQ-hdx"/>
+                        <outlet property="saveButton" destination="P1z-Aw-2z5" id="3zu-ew-a9H"/>
                         <outlet property="titleTextField" destination="Ye4-ek-Tiy" id="RLI-3D-PxL"/>
                     </connections>
                 </viewController>
@@ -304,6 +306,9 @@
             <point key="canvasLocation" x="2347.826086956522" y="503.57142857142856"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="bqn-hy-Fah"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="alarm" catalog="system" width="124" height="128"/>
         <image name="background1" width="120" height="85"/>
