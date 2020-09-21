@@ -31,9 +31,7 @@ class AlarmListViewController: UIViewController {
         } catch {
             print("Error saving context: \(error)")
         }
-        
         tableView.reloadData()
-        
     }
     
     func loadArray() -> [Alarm] {
@@ -44,7 +42,6 @@ class AlarmListViewController: UIViewController {
         } catch {
             print("Error loading alarms: \(error)")
         }
-        
         //TODO: In case the loading failed then return empty array with print statement.
         return []
     }
@@ -59,10 +56,38 @@ class AlarmListViewController: UIViewController {
     
     func deleteAlarm(at index: Int) {
         // TODO: Write the deleteAlarm function
+        print("Delete activated")
+        context.delete(alarmsArray[index])
+        alarmsArray.remove(at: index)
+        saveArray()
+        
     }
     
     func deleteAllAlarms() {
         // TODO: Write the deleteAllAlarms function
+        guard alarmsArray.count > 0 else {
+            print("Alarms array is already empty")
+            return
+        }
+        
+        print("Delete All activated")
+        
+        let request: NSFetchRequest<Alarm> = Alarm.fetchRequest()
+        request.returnsObjectsAsFaults = false
+        do {
+            let results = try context.fetch(request)
+            for result in results {
+                context.delete(result)
+            }
+        } catch {
+            print("Failed to delete all alarms. \(error)")
+        }
+        
+        for index in 0...alarmsArray.count-1 {
+            context.delete(alarmsArray[index])
+        }
+        alarmsArray = []
+        saveArray()
     }
 
      // MARK: - Navigation
@@ -73,11 +98,14 @@ class AlarmListViewController: UIViewController {
 //            tableView.deselectRow(at: indexPath!, animated: true)
             destVC.currentAlarm = alarmsArray[indexPath!.row]
         }
-    
-         
     }
     
-
+    // MARK: - Actions
+    @IBAction func deleteAllButtonTapped(_ sender: UIButton) {
+        deleteAllAlarms()
+        print("Deleting All alarmsd")
+    }
+    
 }
 
 // MARK: - TableView Delegate & DataSource Extension
@@ -94,7 +122,7 @@ extension AlarmListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // TODO: Handle clicking the delete button
-            print("Delete activated")
+            deleteAlarm(at: indexPath.row)
         }
     }
     
@@ -115,6 +143,4 @@ extension AlarmListViewController: UITableViewDelegate, UITableViewDataSource {
         print("1: \(indexPath.row)")
         performSegue(withIdentifier: "alarmPageSegue", sender: self)
     }
-    
-    
 }

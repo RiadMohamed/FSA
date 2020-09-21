@@ -138,6 +138,9 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="close" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Ej-SD-j6v">
                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="22"/>
+                                                <connections>
+                                                    <action selector="deleteAllButtonTapped:" destination="LmK-p7-Wrl" eventType="touchUpInside" id="c0V-d2-iN8"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bb4-dV-pur">
                                                 <rect key="frame" x="356" y="0.0" width="18" height="22"/>
