@@ -250,10 +250,9 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Cq6-HH-s5M">
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Cq6-HH-s5M">
                                         <rect key="frame" x="0.0" y="69.5" width="374" height="216"/>
                                         <color key="tintColor" red="0.14047676319999999" green="0.25750997660000002" blue="0.27880072589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <locale key="locale" localeIdentifier="zu"/>
                                     </datePicker>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbA-qG-t2O">
                                         <rect key="frame" x="0.0" y="293.5" width="37.5" height="20.5"/>

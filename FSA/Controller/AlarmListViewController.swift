@@ -8,6 +8,9 @@
 
 import UIKit
 import CoreData
+import UserNotifications
+
+
 class AlarmListViewController: UIViewController {
     // MARK: - Outlets & Variables
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -23,6 +26,19 @@ class AlarmListViewController: UIViewController {
         
         alarmsArray = self.loadArray()
         // Do any additional setup after loading the view.
+    }
+    
+    func deselectRows() {
+        if let selectedIndex = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndex, animated: true)
+        }
+    }
+    
+    func dateToString(for date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .short
+        return dateFormatter.string(from: date)
     }
     
     func saveArray() {
@@ -57,6 +73,7 @@ class AlarmListViewController: UIViewController {
     func deleteAlarm(at index: Int) {
         // TODO: Write the deleteAlarm function
         print("Delete activated")
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [dateToString(for: alarmsArray[index].dateCreated!)])
         context.delete(alarmsArray[index])
         alarmsArray.remove(at: index)
         saveArray()
@@ -71,7 +88,7 @@ class AlarmListViewController: UIViewController {
         }
         
         print("Delete All activated")
-        
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
         let request: NSFetchRequest<Alarm> = Alarm.fetchRequest()
         request.returnsObjectsAsFaults = false
         do {
@@ -121,13 +138,11 @@ extension AlarmListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // TODO: Handle clicking the delete button
             deleteAlarm(at: indexPath.row)
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // TODO: Design the alarm cell
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "alarmCell") else {
             print("Cannot dequeue alarmCell cell")
             return UITableViewCell()
@@ -135,7 +150,7 @@ extension AlarmListViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = alarmsArray[indexPath.row].title
         
         // TODO: change the notes to date.
-        cell.detailTextLabel?.text = alarmsArray[indexPath.row].notes
+        cell.detailTextLabel?.text = dateToString(for: alarmsArray[indexPath.row].date!)
         return cell
     }
     
