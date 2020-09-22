@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        
+    }
+    
     func applicationWillTerminate(_ application: UIApplication) {
         self.saveContext()
     }
