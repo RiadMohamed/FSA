@@ -24,6 +24,8 @@ class AlarmViewController: UIViewController {
         super.viewDidLoad()
 //        datePicker.timeZone = TimeZone(identifier: "UTC")
         
+        
+        
         if let safeCurrentAlarm = currentAlarm {
             titleTextField.text = safeCurrentAlarm.title
             notesTextField.text = safeCurrentAlarm.notes
@@ -75,9 +77,12 @@ class AlarmViewController: UIViewController {
         content.title = alarm.title!
         content.sound = .default
         content.body = alarm.notes!
+        content.badge = 1
         let calendar = Calendar.current
-        let components = calendar.dateComponents([.year,.month,.day], from: alarm.date!)
+        let components = calendar.dateComponents([.year,.month,.day, .hour, .minute], from: alarm.date!)
+        print(components)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
+//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         let request = UNNotificationRequest(identifier: dateToString(for: alarm.dateCreated!), content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) { (error) in
