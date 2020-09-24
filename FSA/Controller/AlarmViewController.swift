@@ -47,12 +47,11 @@ class AlarmViewController: UIViewController {
         
 //        print(alarm.date?.timeIntervalSince1970)
         
-        addNotification(for: alarm)
-        
-        guard let parentVC = self.presentingViewController as? AlarmListViewController else {
+        guard let parentVC = self.presentingViewController?.children.last as? AlarmListViewController else {
             print("VC is not shown modally from parent")
             return
         }
+        addNotification(for: alarm)
         parentVC.alarmsArray.append(alarm)
         parentVC.saveArray()
     }
