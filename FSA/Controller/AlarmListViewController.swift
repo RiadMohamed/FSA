@@ -24,7 +24,7 @@ class AlarmListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        alarmsArray = self.loadArray()
+        alarmsArray = loadArray()
         // Do any additional setup after loading the view.
     }
     
@@ -51,37 +51,31 @@ class AlarmListViewController: UIViewController {
     }
     
     func loadArray() -> [Alarm] {
-        //TODO: CoreData to load the saved alarms
         let request : NSFetchRequest<Alarm> = Alarm.fetchRequest()
         do {
             return try context.fetch(request)
         } catch {
             print("Error loading alarms: \(error)")
         }
-        //TODO: In case the loading failed then return empty array with print statement.
         return []
     }
     
     func updateAlarm(_ updatedAlarm: Alarm) {
-        // TODO: Write the updateAlarm function
         let indexPath = tableView.indexPathForSelectedRow
         tableView.deselectRow(at: indexPath!, animated: true)
         alarmsArray[indexPath!.row] = updatedAlarm
-        self.saveArray()
+        saveArray()
     }
     
     func deleteAlarm(at index: Int) {
-        // TODO: Write the deleteAlarm function
         print("Delete activated")
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [dateToString(for: alarmsArray[index].dateCreated!)])
         context.delete(alarmsArray[index])
         alarmsArray.remove(at: index)
         saveArray()
-        
     }
     
     func deleteAllAlarms() {
-        // TODO: Write the deleteAllAlarms function
         guard alarmsArray.count > 0 else {
             print("Alarms array is already empty")
             return
@@ -112,7 +106,6 @@ class AlarmListViewController: UIViewController {
         if segue.identifier == "alarmPageSegue" {
             let destVC = segue.destination as! AlarmViewController
             let indexPath = tableView.indexPathForSelectedRow
-//            tableView.deselectRow(at: indexPath!, animated: true)
             destVC.currentAlarm = alarmsArray[indexPath!.row]
         }
     }
@@ -120,7 +113,7 @@ class AlarmListViewController: UIViewController {
     // MARK: - Actions
     @IBAction func deleteAllButtonTapped(_ sender: UIButton) {
         deleteAllAlarms()
-        print("Deleting All alarmsd")
+        print("Deleting All alarms")
     }
     
 }
@@ -155,7 +148,6 @@ extension AlarmListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("1: \(indexPath.row)")
         performSegue(withIdentifier: "alarmPageSegue", sender: self)
     }
 }

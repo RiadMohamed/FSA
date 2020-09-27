@@ -12,10 +12,9 @@
         <attribute name="callsign" optional="YES" attributeType="String"/>
         <attribute name="departure" optional="YES" attributeType="String"/>
         <attribute name="departureTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="route" optional="YES" attributeType="String"/>
     </entity>
     <elements>
         <element name="Alarm" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="Flight" positionX="-54" positionY="18" width="128" height="133"/>
+        <element name="Flight" positionX="-54" positionY="18" width="128" height="118"/>
     </elements>
 </model>
