@@ -22,10 +22,6 @@ class AlarmViewController: UIViewController {
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-//        datePicker.timeZone = TimeZone(identifier: "UTC")
-        
-        
-        
         if let safeCurrentAlarm = currentAlarm {
             titleTextField.text = safeCurrentAlarm.title
             notesTextField.text = safeCurrentAlarm.notes
@@ -45,19 +41,17 @@ class AlarmViewController: UIViewController {
         alarm.notes = notesTextField.text ?? ""
         alarm.dateCreated = Date()
         
-//        print(alarm.date?.timeIntervalSince1970)
-        
         guard let parentVC = self.presentingViewController?.children.last as? AlarmListViewController else {
             print("VC is not shown modally from parent")
             return
         }
+        
         addNotification(for: alarm)
         parentVC.alarmsArray.append(alarm)
         parentVC.saveArray()
     }
     
     func updateAlarm() {
-        // TODO: write the updateAlarm Function
         currentAlarm!.title = titleTextField.text ?? ""
         currentAlarm!.date = datePicker.date
         currentAlarm!.notes = notesTextField.text ?? ""
@@ -82,7 +76,7 @@ class AlarmViewController: UIViewController {
         print(components)
         let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
 //        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: dateToString(for: alarm.dateCreated!), content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: alarm.dateCreated!.toString(), content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(request) { (error) in
             if error != nil {
@@ -92,16 +86,10 @@ class AlarmViewController: UIViewController {
     }
     
     func updateNotification(for alarm: Alarm) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [dateToString(for: alarm.dateCreated!)])
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [alarm.dateCreated!.toString()])
         addNotification(for: alarm)
     }
     
-    func dateToString(for date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
-        return dateFormatter.string(from: date)
-    }
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: UIButton) {
@@ -111,12 +99,6 @@ class AlarmViewController: UIViewController {
             updateAlarm()
         }
         dismiss(animated: true, completion: nil)
-        
-//        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//            // Get the new view controller using segue.destination.
-//            // Pass the selected object to the new view controller.
-//            
-//        }
     }
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         guard let parentVC = self.presentingViewController as? AlarmListViewController else {

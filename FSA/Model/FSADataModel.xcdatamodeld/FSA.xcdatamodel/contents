@@ -10,11 +10,12 @@
         <attribute name="alarmTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="arrival" optional="YES" attributeType="String"/>
         <attribute name="callsign" optional="YES" attributeType="String"/>
+        <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="departure" optional="YES" attributeType="String"/>
         <attribute name="departureTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
         <element name="Alarm" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="Flight" positionX="-54" positionY="18" width="128" height="118"/>
+        <element name="Flight" positionX="-54" positionY="18" width="128" height="28"/>
     </elements>
 </model>

@@ -415,11 +415,17 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="53" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelButtonTapped:" destination="bLq-uo-vRU" eventType="touchUpInside" id="ifo-r3-HJm"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5Z-0S-YxT">
                                                 <rect key="frame" x="337" y="0.0" width="37" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Save"/>
+                                                <connections>
+                                                    <action selector="saveButtonTapped:" destination="bLq-uo-vRU" eventType="touchUpInside" id="Dg4-ql-fFW"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -503,6 +509,7 @@
                         <outlet property="callsignTextField" destination="yKl-Wc-WlB" id="vtm-2l-rDI"/>
                         <outlet property="departureTextField" destination="mBR-4N-7Td" id="mXL-Ea-2WY"/>
                         <outlet property="etdDatePicker" destination="z9b-Em-Xmp" id="kdv-3S-OVn"/>
+                        <outlet property="saveButton" destination="w5Z-0S-YxT" id="fXw-Sm-f0u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LcM-CD-aCY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

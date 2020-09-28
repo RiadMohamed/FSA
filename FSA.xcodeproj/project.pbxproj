@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		0C41ECA92515590200D64AD0 /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C41ECA82515590200D64AD0 /* AlarmListViewController.swift */; };
 		0C49DD0924AE614100673784 /* FSAErrorEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49DD0824AE614100673784 /* FSAErrorEnum.swift */; };
-		0C49DD0B24B2000200673784 /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C49DD0A24B2000200673784 /* TimeModel.swift */; };
 		0C9788EF2517A45400BD9EC3 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9788EE2517A45400BD9EC3 /* AlarmViewController.swift */; };
 		0C9788F7251CEAA500BD9EC3 /* FlightListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9788F6251CEAA400BD9EC3 /* FlightListViewController.swift */; };
 		0C9788FA252113DD00BD9EC3 /* FlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9788F9252113DD00BD9EC3 /* FlightViewController.swift */; };
+		0C9788FE25227C1B00BD9EC3 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9788FD25227C1B00BD9EC3 /* Date.swift */; };
 		0CA972B824A37619002AB9BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972B724A37619002AB9BA /* AppDelegate.swift */; };
 		0CA972BA24A37619002AB9BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972B924A37619002AB9BA /* SceneDelegate.swift */; };
 		0CA972BC24A37619002AB9BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972BB24A37619002AB9BA /* ViewController.swift */; };
@@ -26,10 +26,10 @@
 /* Begin PBXFileReference section */
 		0C41ECA82515590200D64AD0 /* AlarmListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmListViewController.swift; sourceTree = "<group>"; };
 		0C49DD0824AE614100673784 /* FSAErrorEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSAErrorEnum.swift; sourceTree = "<group>"; };
-		0C49DD0A24B2000200673784 /* TimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
 		0C9788EE2517A45400BD9EC3 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 		0C9788F6251CEAA400BD9EC3 /* FlightListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightListViewController.swift; sourceTree = "<group>"; };
 		0C9788F9252113DD00BD9EC3 /* FlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightViewController.swift; sourceTree = "<group>"; };
+		0C9788FD25227C1B00BD9EC3 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		0CA972B424A37619002AB9BA /* FSA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA972B724A37619002AB9BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CA972B924A37619002AB9BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 			children = (
 				0CA972C024A37619002AB9BA /* FSADataModel.xcdatamodeld */,
 				0C49DD0824AE614100673784 /* FSAErrorEnum.swift */,
-				0C49DD0A24B2000200673784 /* TimeModel.swift */,
+				0C9788FD25227C1B00BD9EC3 /* Date.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -271,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0CA972BC24A37619002AB9BA /* ViewController.swift in Sources */,
+				0C9788FE25227C1B00BD9EC3 /* Date.swift in Sources */,
 				0CA972B824A37619002AB9BA /* AppDelegate.swift in Sources */,
 				0C41ECA92515590200D64AD0 /* AlarmListViewController.swift in Sources */,
 				0CA972C224A37619002AB9BA /* FSADataModel.xcdatamodeld in Sources */,
@@ -278,7 +279,6 @@
 				0C9788EF2517A45400BD9EC3 /* AlarmViewController.swift in Sources */,
 				0C9788F7251CEAA500BD9EC3 /* FlightListViewController.swift in Sources */,
 				0CA972BA24A37619002AB9BA /* SceneDelegate.swift in Sources */,
-				0C49DD0B24B2000200673784 /* TimeModel.swift in Sources */,
 				0C49DD0924AE614100673784 /* FSAErrorEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

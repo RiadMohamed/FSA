@@ -22,9 +22,7 @@ class FlightListViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-
         flightsArray = loadArray()
-        // Do any additional setup after loading the view.
     }
     
     
@@ -32,13 +30,6 @@ class FlightListViewController: UIViewController {
         if let selectedIndex = tableView.indexPathForSelectedRow {
             tableView.deselectRow(at: selectedIndex, animated: true)
         }
-    }
-    
-    func dateToString(for date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
-        return dateFormatter.string(from: date)
     }
     
     func saveArray() {
@@ -145,7 +136,7 @@ extension FlightListViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.textLabel?.text = flightsArray[indexPath.row].callsign
         
-        cell.detailTextLabel?.text = dateToString(for: flightsArray[indexPath.row].departureTime!)
+        cell.detailTextLabel?.text = flightsArray[indexPath.row].departureTime!.toString()
         return cell
     }
     

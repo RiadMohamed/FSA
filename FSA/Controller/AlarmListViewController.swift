@@ -69,7 +69,7 @@ class AlarmListViewController: UIViewController {
     
     func deleteAlarm(at index: Int) {
         print("Delete activated")
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [dateToString(for: alarmsArray[index].dateCreated!)])
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [alarmsArray[index].dateCreated!.toString()])
         context.delete(alarmsArray[index])
         alarmsArray.remove(at: index)
         saveArray()
@@ -142,8 +142,7 @@ extension AlarmListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.textLabel?.text = alarmsArray[indexPath.row].title
         
-        // TODO: change the notes to date.
-        cell.detailTextLabel?.text = dateToString(for: alarmsArray[indexPath.row].date!)
+        cell.detailTextLabel?.text = alarmsArray[indexPath.row].date!.toString()
         return cell
     }
     
