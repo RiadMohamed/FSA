@@ -32,6 +32,12 @@ class FlightListViewController: UIViewController {
         }
     }
     
+    func addFlight(_ flight: Flight) {
+        flightsArray.append(flight)
+        saveArray()
+    }
+    
+    // MARK: - CRUD
     func saveArray() {
         do {
             try context.save()
@@ -40,7 +46,6 @@ class FlightListViewController: UIViewController {
         }
         tableView.reloadData()
     }
-    
     func loadArray() -> [Flight] {
         let request : NSFetchRequest<Flight> = Flight.fetchRequest()
         do {
@@ -50,23 +55,18 @@ class FlightListViewController: UIViewController {
         }
         return []
     }
-    
-    
     func updateFlight(_ updatedFlight: Flight) {
         let indexPath = tableView.indexPathForSelectedRow
         tableView.deselectRow(at: indexPath!, animated: true)
         flightsArray[indexPath!.row] = updatedFlight
         saveArray()
     }
-    
-    
     func deleteFlight(at index: Int) {
         print("Delete activated")
         context.delete(flightsArray[index])
         flightsArray.remove(at: index)
         saveArray()
     }
-    
     func deleteAllFlights() {
         guard flightsArray.count > 0 else {
             print("Flights array is already empty")
@@ -95,7 +95,6 @@ class FlightListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "flightPageSegue" {
-            // TODO: Create a FlightVC
             let destVC = segue.destination as! FlightViewController
             let indexPath = tableView.indexPathForSelectedRow
             destVC.currentFlight = flightsArray[indexPath!.row]
@@ -136,7 +135,7 @@ extension FlightListViewController: UITableViewDelegate, UITableViewDataSource {
         
         cell.textLabel?.text = flightsArray[indexPath.row].callsign
         
-        cell.detailTextLabel?.text = flightsArray[indexPath.row].departureTime!.toString()
+        cell.detailTextLabel?.text = flightsArray[indexPath.row].etd!.toString()
         return cell
     }
     

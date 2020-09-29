@@ -13,6 +13,8 @@
 		0C9788F7251CEAA500BD9EC3 /* FlightListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9788F6251CEAA400BD9EC3 /* FlightListViewController.swift */; };
 		0C9788FA252113DD00BD9EC3 /* FlightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9788F9252113DD00BD9EC3 /* FlightViewController.swift */; };
 		0C9788FE25227C1B00BD9EC3 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9788FD25227C1B00BD9EC3 /* Date.swift */; };
+		0C978901252283BB00BD9EC3 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C978900252283BB00BD9EC3 /* Alarm.swift */; };
+		0C9789042522897000BD9EC3 /* TimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9789032522897000BD9EC3 /* TimeModel.swift */; };
 		0CA972B824A37619002AB9BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972B724A37619002AB9BA /* AppDelegate.swift */; };
 		0CA972BA24A37619002AB9BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972B924A37619002AB9BA /* SceneDelegate.swift */; };
 		0CA972BC24A37619002AB9BA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972BB24A37619002AB9BA /* ViewController.swift */; };
@@ -30,6 +32,8 @@
 		0C9788F6251CEAA400BD9EC3 /* FlightListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightListViewController.swift; sourceTree = "<group>"; };
 		0C9788F9252113DD00BD9EC3 /* FlightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightViewController.swift; sourceTree = "<group>"; };
 		0C9788FD25227C1B00BD9EC3 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		0C978900252283BB00BD9EC3 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		0C9789032522897000BD9EC3 /* TimeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeModel.swift; sourceTree = "<group>"; };
 		0CA972B424A37619002AB9BA /* FSA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CA972B724A37619002AB9BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0CA972B924A37619002AB9BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +87,8 @@
 				0CA972C024A37619002AB9BA /* FSADataModel.xcdatamodeld */,
 				0C49DD0824AE614100673784 /* FSAErrorEnum.swift */,
 				0C9788FD25227C1B00BD9EC3 /* Date.swift */,
+				0C9789032522897000BD9EC3 /* TimeModel.swift */,
+				0C978900252283BB00BD9EC3 /* Alarm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -280,6 +286,8 @@
 				0C9788F7251CEAA500BD9EC3 /* FlightListViewController.swift in Sources */,
 				0CA972BA24A37619002AB9BA /* SceneDelegate.swift in Sources */,
 				0C49DD0924AE614100673784 /* FSAErrorEnum.swift in Sources */,
+				0C9789042522897000BD9EC3 /* TimeModel.swift in Sources */,
+				0C978901252283BB00BD9EC3 /* Alarm.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

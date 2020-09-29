@@ -87,7 +87,7 @@
                             <constraint firstItem="IFE-tU-1Zl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="50" id="tfw-7N-P0H"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="globe" catalog="system" selectedImage="globe" id="CZ2-Xa-cjP"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="globe" catalog="system" id="CZ2-Xa-cjP"/>
                     <connections>
                         <outlet property="cityLabel" destination="Q62-kU-OkU" id="jER-BJ-fYg"/>
                         <outlet property="cityTextField" destination="1CR-Br-LJw" id="vYM-PQ-4Ve"/>
@@ -202,7 +202,7 @@
                             <constraint firstItem="loJ-r5-ULW" firstAttribute="trailing" secondItem="QHP-Su-M6J" secondAttribute="trailing" id="ged-OA-E1S"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="alarm" catalog="system" selectedImage="alarm" id="yuz-1Y-w34"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="alarm" catalog="system" id="yuz-1Y-w34"/>
                     <navigationItem key="navigationItem" id="q8z-2i-0SW"/>
                     <connections>
                         <outlet property="tableView" destination="fcj-7w-Czf" id="BVb-6z-9d7"/>
@@ -386,7 +386,7 @@
                             <constraint firstItem="Nor-G9-x5E" firstAttribute="top" secondItem="HcW-ga-PUC" secondAttribute="top" id="yEc-46-MAL"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="airplane.circle" catalog="system" selectedImage="airplane.circle" id="JmU-ut-2Qq"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="airplane" catalog="system" id="JmU-ut-2Qq"/>
                     <navigationItem key="navigationItem" id="w5R-md-PHf"/>
                     <connections>
                         <outlet property="tableView" destination="MQ4-S5-Vg0" id="pXB-KV-9tN"/>
@@ -522,7 +522,7 @@
         <segue reference="bqn-hy-Fah"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="airplane.circle" catalog="system" width="128" height="121"/>
+        <image name="airplane" catalog="system" width="128" height="115"/>
         <image name="alarm" catalog="system" width="124" height="128"/>
         <image name="background1" width="120" height="85"/>
         <image name="globe" catalog="system" width="128" height="121"/>

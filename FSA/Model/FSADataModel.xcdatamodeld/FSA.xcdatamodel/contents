@@ -5,6 +5,7 @@
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
+        <relationship name="flight" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flight" inverseName="alarm" inverseEntity="Flight"/>
     </entity>
     <entity name="Flight" representedClassName=".Flight" syncable="YES" codeGenerationType="class">
         <attribute name="alarmTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -12,10 +13,11 @@
         <attribute name="callsign" optional="YES" attributeType="String"/>
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="departure" optional="YES" attributeType="String"/>
-        <attribute name="departureTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="etd" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="flight" inverseEntity="Alarm"/>
     </entity>
     <elements>
-        <element name="Alarm" positionX="-63" positionY="-18" width="128" height="103"/>
-        <element name="Flight" positionX="-54" positionY="18" width="128" height="28"/>
+        <element name="Alarm" positionX="129.30078125" positionY="-166.8515625" width="137.625" height="28"/>
+        <element name="Flight" positionX="133.95703125" positionY="-393.53125" width="128" height="28"/>
     </elements>
 </model>

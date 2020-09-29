@@ -19,77 +19,55 @@ class FlightViewController: UIViewController {
     @IBOutlet weak var etdDatePicker: UIDatePicker!
     @IBOutlet weak var alarmDatePicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        if let safeCurrentAlarm = currentAlarm {
-            titleTextField.text = safeCurrentAlarm.title
-            notesTextField.text = safeCurrentAlarm.notes
-            datePicker.date = safeCurrentAlarm.date!
-            saveButton.setTitle("Update Alarm", for: .normal)
+        super.viewDidLoad() 
+        if let safeCurrentFlight = currentFlight {
+            callsignTextField.text = safeCurrentFlight.callsign
+            departureTextField.text = safeCurrentFlight.departure
+            arrivalTextField.text = safeCurrentFlight.arrival
+            etdDatePicker.date = safeCurrentFlight.etd!
+            alarmDatePicker.date = safeCurrentFlight.alarmTime!
+            saveButton.setTitle("Update Flight", for: .normal)
         } else {
-            saveButton.setTitle("Add Alarm", for: .normal)
+            saveButton.setTitle("Add Flight", for: .normal)
         }
     }
     
-    func saveNewFlight() {
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    func getUserFlight() -> Flight {
         let flight = Flight(context: context)
-        flight.title = titleTextField.text ?? ""
-        flight.date = datePicker.date
-        flight.notes = notesTextField.text ?? ""
+        flight.callsign = callsignTextField.text ?? ""
+        flight.departure = departureTextField.text ?? ""
+        flight.arrival = arrivalTextField.text ?? ""
+        flight.etd = etdDatePicker.date
+        flight.alarmTime = alarmDatePicker.date
         flight.dateCreated = Date()
-        
+        flight.alarm = Alarm(context: context)
+        flight.alarm?.date = flight.alarmTime
+        return flight
+    }
+    
+    func addNewFlight() {
         guard let parentVC = self.presentingViewController?.children.last as? FlightListViewController else {
             print("VC is not shown modally from parent")
             return
         }
         
-        addNotification(for: flight)
-        parentVC.flightsArray.append(flight)
-        parentVC.saveArray()
+        let flight = getUserFlight()
+        flight.alarm?.addNotification()
+        parentVC.addFlight(flight)
     }
     
     func updateFlight() {
-        currentFlight!.title = titleTextField.text ?? ""
-        currentFlight!.date = datePicker.date
-        currentFlight!.notes = notesTextField.text ?? ""
-        updateNotification(for: currentFlight!)
-        
         guard let parentVC = self.presentingViewController as? FlightListViewController else {
             print("VC is not shown modally from parent")
             return
         }
-        parentVC.updateAlarm(currentFlight!)
-    }
-
-    func addNotification(for alarm: Alarm) {
-        let content = UNMutableNotificationContent()
-        content.title = alarm.title!
-        content.sound = .default
-        content.body = alarm.notes!
-        content.badge = 1
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year,.month,.day, .hour, .minute], from: alarm.date!)
-        print(components)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: false)
-//        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        let request = UNNotificationRequest(identifier: alarm.dateCreated!.toString(), content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) { (error) in
-            if error != nil {
-                print("Error creating the alamr. \(error!)")
-            }
-        }
-    }
-    
-    func updateNotification(for alarm: Alarm) {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [alarm.dateCreated!.toString()])
-        addNotification(for: alarm)
+        currentFlight = getUserFlight()
+        currentFlight?.alarm?.updateNotification()
+        parentVC.updateFlight(currentFlight!)
     }
     
     // MARK: - Actions

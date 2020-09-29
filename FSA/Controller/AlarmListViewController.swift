@@ -23,9 +23,7 @@ class AlarmListViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
         alarmsArray = loadArray()
-        // Do any additional setup after loading the view.
     }
     
     func deselectRows() {
@@ -34,13 +32,12 @@ class AlarmListViewController: UIViewController {
         }
     }
     
-    func dateToString(for date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .short
-        return dateFormatter.string(from: date)
+    func addAlarm(_ alarm: Alarm) {
+        alarmsArray.append(alarm)
+        saveArray()
     }
     
+    // MARK: - CRUD
     func saveArray() {
         do {
             try context.save()
