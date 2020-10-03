@@ -34,3 +34,4 @@ Project Retrospection (so far):
 * Build and run after small changes to make sure everything works fine so far.
 * Each Feature should contain a Refactor backlog as last PBI to clean up.
 * Use branches for each feature and merge with master for releases. No edits on master.
+* Merging from Xcode is wrong, it adds the entire chain instead of just a new node and no commit message. Merge using terminal instead.
