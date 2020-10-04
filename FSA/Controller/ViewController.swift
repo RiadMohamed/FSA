@@ -116,7 +116,9 @@ class ViewController: UIViewController {
     /// Hide the keyboard, setup the location address, call the fetchLocalTime function with  locationString
     @IBAction func fetchButtonTapped(_ sender: UIButton) {
         // Hide the keyboard.
-        loaderView.startAnimating()
+        if cityTextField.text != "" || countryTextField.text != "" {
+            loaderView.startAnimating()
+        }
         countryTextField.endEditing(true)
         cityTextField.endEditing(true)
         localTimeLabel.text = ""
