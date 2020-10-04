@@ -49,7 +49,9 @@ class FlightViewController: UIViewController {
         flight.alarmTime = alarmDatePicker.date
         flight.dateCreated = Date()
         flight.alarm = Alarm(context: context)
+        flight.alarm?.title = flight.callsign
         flight.alarm?.date = flight.alarmTime
+        flight.alarm?.dateCreated = Date()
         return flight
     }
     
@@ -60,7 +62,7 @@ class FlightViewController: UIViewController {
         }
         
         let flight = getUserFlight()
-        flight.alarm?.addNotification()
+        flight.alarm?.addNotification(flight.callsign)
         parentVC.addFlight(flight)
     }
     
@@ -70,16 +72,27 @@ class FlightViewController: UIViewController {
             return
         }
         currentFlight = getUserFlight()
-        currentFlight?.alarm?.updateNotification()
+        currentFlight?.alarm?.updateNotification(currentFlight?.callsign)
         parentVC.updateFlight(currentFlight!)
     }
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: UIButton) {
+        if currentFlight == nil {
+            addNewFlight()
+        } else {
+            updateFlight()
+        }
+        dismiss(animated: true, completion: nil)
         
     }
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        
+        guard let parentVC  = self.presentingViewController as? FlightListViewController else {
+            print("VC is not shown modally from parent")
+            return
+        }
+        parentVC.deselectRows()
+        dismiss(animated: true, completion: nil)
     }
     
 }

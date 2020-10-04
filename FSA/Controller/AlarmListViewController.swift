@@ -103,7 +103,13 @@ class AlarmListViewController: UIViewController {
         if segue.identifier == "alarmPageSegue" {
             let destVC = segue.destination as! AlarmViewController
             let indexPath = tableView.indexPathForSelectedRow
+            destVC.parentVC = self
             destVC.currentAlarm = alarmsArray[indexPath!.row]
+        }
+        
+        if segue.identifier == "newAlarmSegue" {
+            let destVC = segue.destination as! AlarmViewController
+            destVC.parentVC = self
         }
     }
     

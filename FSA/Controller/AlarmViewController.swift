@@ -19,6 +19,7 @@ class AlarmViewController: UIViewController {
     @IBOutlet weak var saveButton: UIButton!
     var currentAlarm: Alarm? = nil
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var parentVC: AlarmListViewController? = nil
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -43,22 +44,14 @@ class AlarmViewController: UIViewController {
     }
     
     func addNewAlarm() {
-        guard let parentVC = self.presentingViewController?.children.last as? AlarmListViewController else {
-            print("VC is not shown modally from parent")
-            return
-        }
         let alarm = getUserAlarm()
-        alarm.addNotification()
-        parentVC.addAlarm(alarm)
+        alarm.addNotification(alarm.title)
+        parentVC!.addAlarm(alarm)
     }
     func updateAlarm() {
-        guard let parentVC = self.presentingViewController as? AlarmListViewController else {
-            print("VC is not shown modally from parent")
-            return
-        }
         currentAlarm = getUserAlarm()
-        currentAlarm!.updateNotification()
-        parentVC.updateAlarm(currentAlarm!)
+        currentAlarm!.updateNotification(currentAlarm?.title)
+        parentVC!.updateAlarm(currentAlarm!)
     }
     
     
