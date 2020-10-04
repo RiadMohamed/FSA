@@ -17,7 +17,11 @@ class FlightViewController: UIViewController {
     @IBOutlet weak var departureTextField: UITextField!
     @IBOutlet weak var arrivalTextField: UITextField!
     @IBOutlet weak var etdDatePicker: UIDatePicker!
+
     @IBOutlet weak var alarmDatePicker: UIDatePicker!
+    
+    
+    //    @IBOutlet weak var alarmDatePicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     

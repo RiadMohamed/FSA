@@ -218,7 +218,7 @@
             <objects>
                 <viewController id="eOK-Qu-1IU" customClass="AlarmViewController" customModule="FSA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="osa-qG-723">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DzL-zo-sdt">
@@ -400,9 +400,9 @@
         <!--Flight View Controller-->
         <scene sceneID="1wd-Zb-w59">
             <objects>
-                <viewController id="bLq-uo-vRU" customClass="FlightViewController" sceneMemberID="viewController">
+                <viewController id="bLq-uo-vRU" customClass="FlightViewController" customModule="FSA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oQK-tj-HcW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9oN-ED-4on">
@@ -504,7 +504,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="alarmDatePicker" destination="pNM-PO-Ewz" id="jww-Ma-egs"/>
+                        <outlet property="alarmDatePicker" destination="pNM-PO-Ewz" id="hm0-V3-1co"/>
                         <outlet property="arrivalTextField" destination="FJt-J0-PMt" id="0TD-rz-nfa"/>
                         <outlet property="callsignTextField" destination="yKl-Wc-WlB" id="vtm-2l-rDI"/>
                         <outlet property="departureTextField" destination="mBR-4N-7Td" id="mXL-Ea-2WY"/>
