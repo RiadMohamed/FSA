@@ -46,6 +46,8 @@ class FlightViewController: UIViewController {
         flight.alarmTime = alarmDatePicker.date
         flight.dateCreated = Date()
         flight.alarm = Alarm(context: context)
+        flight.alarm?.hasFlight = true
+        flight.alarm?.flight = flight
         flight.alarm?.title = flight.callsign
         flight.alarm?.date = flight.alarmTime
         flight.alarm?.dateCreated = Date()

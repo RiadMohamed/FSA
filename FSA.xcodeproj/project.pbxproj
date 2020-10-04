@@ -22,6 +22,7 @@
 		0CA972C224A37619002AB9BA /* FSADataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0CA972C024A37619002AB9BA /* FSADataModel.xcdatamodeld */; };
 		0CA972C424A3761F002AB9BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0CA972C324A3761F002AB9BA /* Assets.xcassets */; };
 		0CA972C724A3761F002AB9BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CA972C524A3761F002AB9BA /* LaunchScreen.storyboard */; };
+		0CBB6D13252A4614000D7453 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CBB6D12252A4614000D7453 /* Flight.swift */; };
 		1E1BD1808B7D5B44A279EFF9 /* Pods_FSA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A93C49DDCA3756A36256372 /* Pods_FSA.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		0CA972C324A3761F002AB9BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0CA972C624A3761F002AB9BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0CA972C824A3761F002AB9BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0CBB6D12252A4614000D7453 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		7A93C49DDCA3756A36256372 /* Pods_FSA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FSA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		967B68047EDC8CCD6DB2311F /* Pods-FSA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSA.debug.xcconfig"; path = "Target Support Files/Pods-FSA/Pods-FSA.debug.xcconfig"; sourceTree = "<group>"; };
 		A4A85DF7D054AF58AB8931C2 /* Pods-FSA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FSA.release.xcconfig"; path = "Target Support Files/Pods-FSA/Pods-FSA.release.xcconfig"; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				0C9788FD25227C1B00BD9EC3 /* Date.swift */,
 				0C9789032522897000BD9EC3 /* TimeModel.swift */,
 				0C978900252283BB00BD9EC3 /* Alarm.swift */,
+				0CBB6D12252A4614000D7453 /* Flight.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				0C49DD0924AE614100673784 /* FSAErrorEnum.swift in Sources */,
 				0C9789042522897000BD9EC3 /* TimeModel.swift in Sources */,
 				0C978901252283BB00BD9EC3 /* Alarm.swift in Sources */,
+				0CBB6D13252A4614000D7453 /* Flight.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

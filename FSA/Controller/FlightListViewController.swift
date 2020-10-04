@@ -138,7 +138,7 @@ extension FlightListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.textLabel?.text = flightsArray[indexPath.row].callsign
+        cell.textLabel?.text = flightsArray[indexPath.row].getTitle()
         
         cell.detailTextLabel?.text = flightsArray[indexPath.row].etd!.toString()
         return cell

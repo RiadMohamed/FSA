@@ -40,6 +40,7 @@ class AlarmViewController: UIViewController {
         alarm.date = datePicker.date
         alarm.notes = notesTextField.text ?? ""
         alarm.dateCreated = Date()
+        alarm.hasFlight = false
         return alarm
     }
     

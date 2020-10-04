@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Alarm" representedClassName=".Alarm" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="hasFlight" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="notes" optional="YES" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
         <relationship name="flight" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Flight" inverseName="alarm" inverseEntity="Flight"/>
@@ -17,7 +18,7 @@
         <relationship name="alarm" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Alarm" inverseName="flight" inverseEntity="Alarm"/>
     </entity>
     <elements>
-        <element name="Alarm" positionX="129.30078125" positionY="-166.8515625" width="137.625" height="28"/>
-        <element name="Flight" positionX="133.95703125" positionY="-393.53125" width="128" height="28"/>
+        <element name="Alarm" positionX="129.30078125" positionY="-166.8515625" width="137.625" height="133"/>
+        <element name="Flight" positionX="133.95703125" positionY="-393.53125" width="128" height="148"/>
     </elements>
 </model>
