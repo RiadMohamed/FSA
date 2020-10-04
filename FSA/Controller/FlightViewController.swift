@@ -17,13 +17,10 @@ class FlightViewController: UIViewController {
     @IBOutlet weak var departureTextField: UITextField!
     @IBOutlet weak var arrivalTextField: UITextField!
     @IBOutlet weak var etdDatePicker: UIDatePicker!
-
     @IBOutlet weak var alarmDatePicker: UIDatePicker!
-    
-    
-    //    @IBOutlet weak var alarmDatePicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var parentVC: FlightListViewController? = nil
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -56,24 +53,15 @@ class FlightViewController: UIViewController {
     }
     
     func addNewFlight() {
-        guard let parentVC = self.presentingViewController?.children.last as? FlightListViewController else {
-            print("VC is not shown modally from parent")
-            return
-        }
-        
         let flight = getUserFlight()
         flight.alarm?.addNotification(flight.callsign)
-        parentVC.addFlight(flight)
+        parentVC!.addFlight(flight)
     }
     
     func updateFlight() {
-        guard let parentVC = self.presentingViewController as? FlightListViewController else {
-            print("VC is not shown modally from parent")
-            return
-        }
         currentFlight = getUserFlight()
         currentFlight?.alarm?.updateNotification(currentFlight?.callsign)
-        parentVC.updateFlight(currentFlight!)
+        parentVC!.updateFlight(currentFlight!)
     }
     
     // MARK: - Actions
@@ -87,11 +75,7 @@ class FlightViewController: UIViewController {
         
     }
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        guard let parentVC  = self.presentingViewController as? FlightListViewController else {
-            print("VC is not shown modally from parent")
-            return
-        }
-        parentVC.deselectRows()
+        parentVC!.deselectRows()
         dismiss(animated: true, completion: nil)
     }
     
