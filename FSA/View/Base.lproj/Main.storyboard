@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FSA" customModuleProvider="target" sceneMemberID="viewController">
@@ -87,7 +87,7 @@
                             <constraint firstItem="IFE-tU-1Zl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="50" id="tfw-7N-P0H"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="globe" catalog="system" id="CZ2-Xa-cjP"/>
+                    <tabBarItem key="tabBarItem" title="" image="globe" catalog="system" id="CZ2-Xa-cjP"/>
                     <connections>
                         <outlet property="cityLabel" destination="Q62-kU-OkU" id="jER-BJ-fYg"/>
                         <outlet property="cityTextField" destination="1CR-Br-LJw" id="vYM-PQ-4Ve"/>
@@ -123,7 +123,7 @@
             </objects>
             <point key="canvasLocation" x="480" y="504"/>
         </scene>
-        <!--Item-->
+        <!--Alarm List View Controller-->
         <scene sceneID="eQY-fS-lqD">
             <objects>
                 <viewController id="LmK-p7-Wrl" customClass="AlarmListViewController" customModule="FSA" customModuleProvider="target" sceneMemberID="viewController">
@@ -202,7 +202,7 @@
                             <constraint firstItem="QHP-Su-M6J" firstAttribute="trailing" secondItem="loJ-r5-ULW" secondAttribute="trailing" id="k64-9E-vu5"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="alarm" catalog="system" id="yuz-1Y-w34"/>
+                    <tabBarItem key="tabBarItem" title="" image="alarm" catalog="system" id="yuz-1Y-w34"/>
                     <navigationItem key="navigationItem" id="q8z-2i-0SW"/>
                     <connections>
                         <outlet property="tableView" destination="fcj-7w-Czf" id="BVb-6z-9d7"/>
@@ -307,7 +307,7 @@
             </objects>
             <point key="canvasLocation" x="2239" y="504"/>
         </scene>
-        <!--Item-->
+        <!--Flight List View Controller-->
         <scene sceneID="W8P-tT-bV9">
             <objects>
                 <viewController id="5io-kx-jnN" customClass="FlightListViewController" customModule="FSA" customModuleProvider="target" sceneMemberID="viewController">
@@ -386,7 +386,7 @@
                             <constraint firstItem="Nor-G9-x5E" firstAttribute="top" secondItem="HcW-ga-PUC" secondAttribute="top" constant="20" id="yEc-46-MAL"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="airplane" catalog="system" id="JmU-ut-2Qq"/>
+                    <tabBarItem key="tabBarItem" title="" image="airplane" catalog="system" id="JmU-ut-2Qq"/>
                     <navigationItem key="navigationItem" id="w5R-md-PHf"/>
                     <connections>
                         <outlet property="tableView" destination="MQ4-S5-Vg0" id="EDb-w5-eWO"/>
