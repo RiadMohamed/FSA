@@ -25,6 +25,10 @@ Next up:
 * Update my website to include this repo.
 * Implement a MVVM, MVP, VIPER architectures.
 * Use Github Projects.
+* Implement RxSwift reactive progreamming.
+* Use threading and performance tuning.
+* Use the Xcode profiling tools.
+* Use Fastlane for automation of building and deploying iOS apps.
 
 
 
