@@ -39,6 +39,7 @@ class AlarmListViewController: UIViewController {
     
     // MARK: - CRUD
     func saveArray() {
+        print("Saving alarms")
         do {
             try context.save()
         } catch {
@@ -48,7 +49,9 @@ class AlarmListViewController: UIViewController {
     }
     
     func loadArray() -> [Alarm] {
+        print("Loading alarms")
         let request : NSFetchRequest<Alarm> = Alarm.fetchRequest()
+        request.predicate = NSPredicate(format: "hasFlight==%@", false)
         do {
             return try context.fetch(request)
         } catch {
@@ -103,7 +106,13 @@ class AlarmListViewController: UIViewController {
         if segue.identifier == "alarmPageSegue" {
             let destVC = segue.destination as! AlarmViewController
             let indexPath = tableView.indexPathForSelectedRow
+            destVC.parentVC = self
             destVC.currentAlarm = alarmsArray[indexPath!.row]
+        }
+        
+        if segue.identifier == "newAlarmSegue" {
+            let destVC = segue.destination as! AlarmViewController
+            destVC.parentVC = self
         }
     }
     

@@ -20,6 +20,7 @@ class FlightViewController: UIViewController {
     @IBOutlet weak var alarmDatePicker: UIDatePicker!
     @IBOutlet weak var saveButton: UIButton!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var parentVC: FlightListViewController? = nil
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
@@ -45,37 +46,39 @@ class FlightViewController: UIViewController {
         flight.alarmTime = alarmDatePicker.date
         flight.dateCreated = Date()
         flight.alarm = Alarm(context: context)
+        flight.alarm?.hasFlight = true
+        flight.alarm?.flight = flight
+        flight.alarm?.title = flight.callsign
         flight.alarm?.date = flight.alarmTime
+        flight.alarm?.dateCreated = Date()
         return flight
     }
     
     func addNewFlight() {
-        guard let parentVC = self.presentingViewController?.children.last as? FlightListViewController else {
-            print("VC is not shown modally from parent")
-            return
-        }
-        
         let flight = getUserFlight()
-        flight.alarm?.addNotification()
-        parentVC.addFlight(flight)
+        flight.alarm?.addNotification(flight.callsign)
+        parentVC!.addFlight(flight)
     }
     
     func updateFlight() {
-        guard let parentVC = self.presentingViewController as? FlightListViewController else {
-            print("VC is not shown modally from parent")
-            return
-        }
         currentFlight = getUserFlight()
-        currentFlight?.alarm?.updateNotification()
-        parentVC.updateFlight(currentFlight!)
+        currentFlight?.alarm?.updateNotification(currentFlight?.callsign)
+        parentVC!.updateFlight(currentFlight!)
     }
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: UIButton) {
+        if currentFlight == nil {
+            addNewFlight()
+        } else {
+            updateFlight()
+        }
+        dismiss(animated: true, completion: nil)
         
     }
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        
+        parentVC!.deselectRows()
+        dismiss(animated: true, completion: nil)
     }
     
 }

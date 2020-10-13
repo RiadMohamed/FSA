@@ -99,6 +99,11 @@ class FlightListViewController: UIViewController {
             let indexPath = tableView.indexPathForSelectedRow
             destVC.currentFlight = flightsArray[indexPath!.row]
         }
+        
+        if segue.identifier == "newFlightSegue" {
+            let destVC = segue.destination as! FlightViewController
+            destVC.parentVC = self
+        }
     }
     
     
@@ -133,7 +138,7 @@ extension FlightListViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.textLabel?.text = flightsArray[indexPath.row].callsign
+        cell.textLabel?.text = flightsArray[indexPath.row].getTitle()
         
         cell.detailTextLabel?.text = flightsArray[indexPath.row].etd!.toString()
         return cell

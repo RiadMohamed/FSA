@@ -10,11 +10,11 @@ import Foundation
 import UserNotifications
 
 extension Alarm {
-    func addNotification() {
+    func addNotification(_ title: String?, _ notes: String? = "") {
         let content = UNMutableNotificationContent()
-        content.title = self.title!
+        content.title = title!
         content.sound = .default
-        content.body = self.notes!
+        content.body = notes!
         content.badge = 1
         let calendar = Calendar.current
         let components = calendar.dateComponents([.year,.month,.day, .hour, .minute], from: self.date!)
@@ -30,9 +30,9 @@ extension Alarm {
         }
     }
     
-    func updateNotification() {
+    func updateNotification(_ title: String?, _ notes: String? = "") {
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [self.dateCreated!.toString()])
-        self.addNotification()
+        self.addNotification(title)
     }
     
     
